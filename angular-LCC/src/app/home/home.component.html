@@ -1,0 +1,24 @@
+<section class="home-banner">
+    <a href="#" class="banner-prev"></a>
+    <a href="#" class="banner-next"></a>
+    <ngx-slick-carousel class="home-banner-slider" [config]="homeSlider" data-slick='{"autoplaySpeed": 7000}'>
+
+        <div ngxSlickItem class="item home-slide-item"
+        style="background-image: url({{ slide?.img  }})" *ngFor="let slide of slides">
+            <div class="container">
+                <h2>
+                    {{slide?.text}}
+                    <a href="javascript:;" class="btn btn-link">Find Out More</a>
+                </h2>
+            </div>
+        </div>
+
+    </ngx-slick-carousel>
+</section>
+<section class="vision" id="vision">
+    <div class="container">
+        <h1 style="color: #5C821A; font-size: 50px;">LEEDS COMMUNITY CONSULTING</h1>
+        <div>Test</div>
+        <img src="/assets/img/LCC-HomeL.svg" alt="" width="500" height="600">
+    </div>
+</section>
