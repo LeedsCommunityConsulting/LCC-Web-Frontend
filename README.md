@@ -1,38 +1,27 @@
+# AngularLCC
 
-# LCC-Web-Frontend
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
 
-Leed Community Consulting (LCC) is a student-led pro bono management consulting organization affiliated with University of Leeds. LCC aims to provide valuable to support SME’s, local government and charity. This document outlines the requirements, features and technical specifications for development of LCC website.
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Setup
+## Code scaffolding
 
-Setup workspace locally. 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-```bash
-Visit https://github.com/LeedsCommunityConsulting/LCC-Web-Frontend
-Fork the LCC-Web-Frontend workspace under your personal account.
-```
-Clone the forked account in your localy system using below command.
-```bash
-git clone https://github.com/<<your-account-name>>/LCC-Web-Frontend 
-```
-Setup upstream for remote repository
-```bash
-git remote add upstream https://github.com/LeedsCommunityConsulting/LCC-Web-Frontend
-```
-Use below command to verify is upstream are set
-```bash
-git remote -v
-```
+## Build
 
-Working with Git
-To pull use below command
-NOTE : These command has to be done after above steps
-```bash
-git pull upstream main
-```
-To push your work 
-```bash
-step 1 : git push
-step 2 : Go to forked repository click contribute and contribute to main branch.
-```
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
