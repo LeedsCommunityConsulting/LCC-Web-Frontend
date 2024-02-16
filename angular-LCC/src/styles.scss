@@ -508,4 +508,16 @@ a.primary-color { color: $primary; }
  background-color: #dddddd;
 }
 
+.imageMap {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-image: url("/assets/img/uolabt.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+
+    }
+.imageMap img{ width: 100%; height: 100%;}
+
 
