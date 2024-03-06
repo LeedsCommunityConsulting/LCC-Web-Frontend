@@ -106,10 +106,11 @@
         padding: 20px 0;
     }
     h3{
-        font-size: 48px;
+        font-weight: bold;
+        color: #324819;
+        font-size: 35px;
         font-family: 'proxima_nova_rgsbold', Arial, Helvetica, sans-serif;
         margin-bottom: 25px;
-        color: black;
         text-align: center;
         justify-content: center;
         @media (max-width: 992px){
@@ -305,5 +306,42 @@
                 height: 100%;
             }
         }
+    }
+}
+
+.hr-custom{
+    height:5px !important;
+    border-width:0 !important;
+    color:#324819 !important;
+    background-color:#324819 !important;
+    opacity: unset !important;
+    margin-bottom: 35px !important;
+    margin-top: 30px !important;
+}
+
+.ip-banner {
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    background: {
+        image: url("/assets/img/uolabt.jpeg");
+        repeat: no-repeat;
+        position: center;
+        size: cover;
+        color: white;
+    }
+
+    &.no-image {
+        background-image: none;
+    }
+
+    h1 {
+        color: white;
+  display: inline-block;
+  background-color: rgba(0,0,0,.6);
+  font-weight: bold;
+  padding: 65px 150px 65px 150px;
     }
 }
