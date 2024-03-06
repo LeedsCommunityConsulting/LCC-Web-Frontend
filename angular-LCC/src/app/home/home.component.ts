@@ -24,10 +24,9 @@ export class HomeComponent {
   };
 
   slides = [
-    {img: "https://images.pexels.com/photos/840996/pexels-photo-840996.jpeg?auto=compress&cs=tinysrgb&w=800", text: "tile 1"},
-    {img: "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=800", text: "tile 2"},
-    {img: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg?auto=compress&cs=tinysrgb&w=800", text: "tile 3"},
-    {img: "https://images.pexels.com/photos/9490227/pexels-photo-9490227.jpeg?auto=compress&cs=tinysrgb&w=800", text: "tile 4"},
+    {img: "/assets/img/slide1.jpg", text: "NIGHT TIME ECONOMY SOLUTIONS", subtext: "We Helped Them To...", linktext: "Learn More"},
+    {img: "/assets/img/slide2.jpg", text: "EXPLORE OUR VACANCIES", subtext: "Join our team and blah blah", linktext: "Find out More"},
+    {img: "/assets/img/slide3.jpg", text: "EXPLORE OUR VACANCIES", subtext: "We Helped Them To...", linktext: "Find out More"},
   ];
   slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
   

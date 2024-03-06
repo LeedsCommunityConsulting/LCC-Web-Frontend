@@ -5,11 +5,14 @@
 
         <div ngxSlickItem class="item home-slide-item"
         style="background-image: url({{ slide?.img  }})" *ngFor="let slide of slides">
-            <div class="container">
-                <h2>
-                    {{slide?.text}}
-                    <a href="javascript:;" class="btn btn-link">Find Out More</a>
-                </h2>
+            <div class="container" style="position: relative;bottom: 45%;">
+                <div class="ban-text" style="position: absolute;margin-left: 20%;">
+                    <div>
+                    <h2>{{slide?.text}}</h2>
+                    <p>{{slide?.subtext}}</p>
+                    <a href="javascript:;" class="btn ban-btn-link">{{slide?.linktext}}</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -17,8 +20,63 @@
 </section>
 <section class="vision" id="vision">
     <div class="container">
-        <h1 style="color: #5C821A; font-size: 50px;">LEEDS COMMUNITY CONSULTING</h1>
-        <div>Test</div>
-        <img src="/assets/img/LCC-HomeL.svg" alt="" width="500" height="600">
+        <h1 style="color: #324819; font-size: 40px;font-weight: bold;text-align: center;">LEEDS COMMUNITY CONSULTING</h1>
+        <img class="center" src="/assets/img/LCC-HomeL.svg" alt="">
+        <hr class="hr-custom">
+        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;">WHAT WE DO</h3>
+        <p style="color: #324819;font-weight: bold;text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        <hr class="hr-custom">
+        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;">TESTIMONIALS</h3>
+        <p style="color: #324819;font-weight: bold;text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        <div class="testimonialsrow">
+            <div class="testimonialscolumn">
+                <div class="card">
+                    <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
+                    <div class="container">
+                        <h4><b>Company Name</b></h4> 
+                        <p>Feedback</p> 
+                    </div>
+                </div>
+            </div>
+            <div class="testimonialscolumn">
+                <div class="card">
+                    <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
+                    <div class="container">
+                        <h3><b>Company Name</b></h3> 
+                        <p>Feedback</p> 
+                    </div>
+                </div>
+            </div>
+            <div class="testimonialscolumn">
+                <div class="card">
+                    <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
+                    <div class="container">
+                      <h4><b>Company Name</b></h4> 
+                      <p>Feedback</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="hr-custom">
+        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;">WORK WITH US</h3>
+        <div id="cover">
+            <div class="covertileone">
+                <img class="coverimg" src="/assets/img/slide1.jpg">
+                <div class="text-block-one">BECOME A <br>CONSULTANT</div>
+            </div>
+            
+            <div class="covertiletwo">
+                <img class="coverimg" src="/assets/img/slide1.jpg">
+                <div class="text-block-two">HIRE OUR <br>SERVICES</div>
+            </div>
+            <div class="covertilethree">
+                <img class="coverimg" src="/assets/img/slide1.jpg">
+                <div class="text-block-three">CONTACT US</div>
+            </div>
+            <div class="covertilefour">
+                <img class="coverimg" src="/assets/img/slide1.jpg">
+                <div class="text-block-four">VACANCIES</div>
+            </div>
+        </div>
     </div>
 </section>
