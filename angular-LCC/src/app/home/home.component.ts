@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   styleUrls: ['./home.component.scss'],
   standalone: true,
   imports: [
-    SlickCarouselModule,CommonModule
+    SlickCarouselModule,CommonModule,HeaderComponent,FooterComponent
   ],
 })
 export class HomeComponent {
