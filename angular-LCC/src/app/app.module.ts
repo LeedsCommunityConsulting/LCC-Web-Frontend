@@ -6,6 +6,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ConstantService } from './services/constant.service';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +18,7 @@ import { AppComponent } from './app.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
+    SidebarComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
@@ -20,8 +26,11 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SlickCarouselModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ConstantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,16 +1,77 @@
-<div class="col-lg-2 col-1 navBg pl-0 pr-0">
-    <nav class="nav  navbar-toggleable-sm">
-      <div class="navbar  flex-column mt-md-0  pt-md-0  p-0 w-100" id="navbarWEX">
-        <h1>Brand Name</h1>
-        <a href="" class="nav-link"><i class="fa fa-dashboard"> </i><span>Dashboard </span></a>
-        <a href="" class="nav-link"><i class="fa fa-music" aria-hidden="true"></i><span>Media</span></a>
-        <a href="" class="nav-link"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Pages</span></a>
-        <a href="" class="nav-link"><i class="fa fa-commenting-o" aria-hidden="true"></i><span>Comments</span></a>
-        <a href="" class="nav-link"><i class="fa fa-paint-brush" aria-hidden="true"></i><span>Appearance</span></a>
-        <a href="" class="nav-link"><i class="fa fa-plug" aria-hidden="true"></i><span>Plugins</span></a>
-        <a href="" class="nav-link"><i class="fa fa-users" aria-hidden="true"></i><span>Users</span></a>
-        <a href="" class="nav-link"><i class="fa fa-wrench" aria-hidden="true"></i><span>Tools</span></a>
-        <small>Taha Cankurt</small>
+<app-sidebar></app-sidebar>
+
+ <!-- CONTENT -->
+ <section id="content">
+  <app-admin-header></app-admin-header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Dashboard</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" href="#">Home</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  </div>
+      <!-- <a href="#" class="btn-download">
+        <i class='bx bxs-cloud-download' ></i>
+        <span class="text">Download PDF</span>
+      </a> -->
+    </div>
+
+    <ul class="box-info">
+      <a href="javascript:;" [routerLink]="['/admin/events']">
+        <li>
+          <i class='bx bxs-calendar-check' ></i>
+          <span class="text">
+            <h3>1020</h3>
+            <p>Events</p>
+          </span>
+        </li>
+      </a>
+      <a href="javascript:;" [routerLink]="['/admin/vaccancy']">
+        <li>
+          <i class='bx bxs-doughnut-chart' ></i>
+          <span class="text">
+            <h3>2543</h3>
+            <p>Vacancies</p>
+          </span>
+        </li>
+      </a>
+      
+      <a href="javascript:;" [routerLink]="['/admin/users']">
+        <li>
+          <i class='bx bxs-group' ></i>
+          <span class="text">
+            <h3>2834</h3>
+            <p>Users</p>
+          </span>
+        </li>
+      </a>
+
+      <a href="javascript:;" [routerLink]="['/admin/users']">
+        <li>
+          <i class='bx bxs-group' ></i>
+          <span class="text">
+            <h3>2834</h3>
+            <p>Users</p>
+          </span>
+        </li>
+      </a>
+    </ul>
+
+
+    <div class="table-data">
+      
+      
+    </div>
+  </main>
+  <!-- MAIN -->
+</section>
+<!-- CONTENT -->

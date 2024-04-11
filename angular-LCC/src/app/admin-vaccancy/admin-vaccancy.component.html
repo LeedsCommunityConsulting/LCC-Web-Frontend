@@ -1,0 +1,244 @@
+<app-sidebar></app-sidebar>
+<section id="content">
+    <!-- NAVBAR -->
+    <app-admin-header></app-admin-header>
+    <!-- NAVBAR -->
+
+<main>
+    <div class="success-msg" *ngIf="successmsg">
+        <i class="fa fa-check"></i>
+        {{successMsgCnt}}
+    </div>
+    <div class="warning-msg" *ngIf="warningmsg">
+        <i class="fa fa-warning"></i>
+        This is a warning message.
+      </div>
+      
+      <div class="error-msg" *ngIf="errormsg">
+        <i class="fa fa-times-circle"></i>
+        This is a error message.
+      </div>
+    <div class="head-title">
+      <div class="left">
+        <h1>Vacancy</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" href="javascript:;">Vacancy</a>
+          </li>
+        </ul>
+      </div>
+      <a href="javascript:;" class="btn-download" (click)="addEvent()">
+        <i class='bx bxs-cloud-download' ></i>
+        <span class="text">Add Vacancy</span>
+      </a>
+    </div>
+
+    <div class="table-data" id="eventsFTable">
+      <div class="order">
+        <div class="head">
+          <h3>Vacancy Records</h3>
+          <i class='bx bx-search' ></i>
+          <i class='bx bx-filter' ></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Availablity</th>
+              <th>Place</th>
+              <th>Vacancy Status</th>
+              <th>Publish Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor=" let datas of data" class="{{datas.id?.S}}" (click)="selectRow(datas.id?.S)" >
+              <td>
+                <img src="https://img.playbook.com/IZSaaisbuPYRUSQYBZckzA61Px-1dJx2_5pGRp3N4dk/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzRkZmUwYjQ2/LWRhNjAtNDQ2Yy1h/Y2UxLWM0ZTZkMGI3/NTdlMA">
+                <p>{{datas.title?.S}}</p>
+              </td>
+              <td>20th April</td>
+              <td>10am-2pm</td>
+              <td>Leeds University Union</td>
+              <td><span class="status completed">Completed</span></td>
+              <td><span class="status pending">Not Published</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal fade" id="add-event-modal" tabindex="-1">
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+          <!-- <button type="button" class="close profile-close" data-dismiss="modal" aria-label="Close" #closeSignupKoala>
+          <img src="assets/img/modal-close.svg" alt="icon" width="25" height="25" />
+          </button> -->
+          
+
+          <div class="container">
+            <h2 class="heading">Create New vacancy</h2>
+            <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)" >
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" [(ngModel)]="eventDetails.title" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" [(ngModel)]="eventDetails.description" required>
+              </div>
+          
+              <div class="form-group">
+                <label for="availablity">Availablity</label>
+                <input type="text" class="form-control" id="availablity" name="availablity"  [(ngModel)]="eventDetails.availablity" required>
+              </div>
+          
+              <!-- <div class="form-group">
+                <label for="gender">Event Status</label>
+                <select class="form-control" id="gender" name="gender"  required>
+                  <option value="" disabled>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                <div  class="text-danger">
+                  Please select a gender.
+                </div>
+              </div> -->
+              <div class="splitscreen">
+                <div class="left">
+                    <input  type="submit"
+                    class="btn-events"  >
+                </div>
+              
+                <div class="right">
+                    <button type="button" class="btn-events-close" (click)="closeModal()">
+                        cancel
+                        </button>
+                </div>
+              </div>
+              
+             
+              <!-- <span class="spinner-border" role="status" aria-hidden="true"></span> -->
+            </form>
+          </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <div class="modal fade" id="action-event-modal" tabindex="-1">
+        <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <div class="container">
+                <h2 class="heading" style="text-align: center;">Edit or Delete Vacancy</h2>
+                <input value="" type="hidden" id="editOrDeleteEvent">
+                  <div class="splitscreen">
+                    <div class="left">
+                        <button type="button" class="btn-events" (click)="editModal()">
+                            Edit
+                            </button>
+                    </div>
+                    <div class="right">
+                        <button type="button" class="btn-events-close" (click)="deletModal()">
+                            Delete
+                            </button>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+
+
+        <div class="modal fade" id="delete-event-modal" tabindex="-1">
+            <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <div class="container">
+                    <h2 class="heading" style="text-align: center;">Are you sure you want to delete this vacancy? </h2>
+                    <input value="" type="hidden" id="confrmDeleteEvent">
+                      <div class="splitscreen">
+                        <div class="left">
+                            <button type="button" class="btn-events" (click)="deletEvent()">
+                                Yes
+                                </button>
+                        </div>
+                      
+                        <div class="right">
+                            <button type="button" class="btn-events-close" (click)="closeDeletModal()">
+                                No
+                                </button>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            </div>
+            </div>
+
+            <div class="modal fade" id="edit-event-modal" tabindex="-1">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                      <!-- <button type="button" class="close profile-close" data-dismiss="modal" aria-label="Close" #closeSignupKoala>
+                      <img src="assets/img/modal-close.svg" alt="icon" width="25" height="25" />
+                      </button> -->
+                      
+            
+                      <div class="container">
+                        <h2 class="heading">Edit Vacancy</h2>
+                        <input type="hidden" value="" id="editEventsId">
+                        <form [formGroup]="myForm" (ngSubmit)="updateEventsForm(myForm)">
+                            <div class="form-group">
+                              <label for="title">
+                                Title:
+                                <input class="form-control" formControlName="title" placeholder="Title">
+                              </label>
+                            </div>
+                            <div class="form-group">
+                              <label for="availablity">
+                                Availablity:
+                                <input class="form-control" formControlName="availablity" placeholder="availablity">
+                              </label>
+                            </div>
+                            <div class="form-group">
+                              <label for="description">
+                                description:
+                                <input class="form-control" formControlName="description" placeholder="description">
+                              </label>
+                            </div>
+                            <div class="splitscreen">
+                                <div class="left">
+                                    <input  type="submit"
+                                    class="btn-events"  >
+                                </div>
+                              
+                                <div class="right">
+                                    <button type="button" class="btn-events-close" (click)="closeModal()">
+                                        cancel
+                                    </button>
+                                </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+
+            
+
+</section>

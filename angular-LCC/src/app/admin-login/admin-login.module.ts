@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminLoginComponent } from './admin-login.component';
 import { AdminLoginRoutingModule } from './admin-login-routing.module';
+import { ConstantService } from '../services/constant.service';
 
 @NgModule({
   declarations: [AdminLoginComponent],
@@ -11,7 +12,8 @@ import { AdminLoginRoutingModule } from './admin-login-routing.module';
     CommonModule,
     AdminLoginRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConstantService
   ],
   exports : [
     AdminLoginComponent,
