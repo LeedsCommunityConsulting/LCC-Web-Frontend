@@ -11,7 +11,7 @@ import { AdminDashboardComponent } from './admin-dashboard.component';
     CommonModule,
     AdminDashboardRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports : [
     AdminDashboardComponent,
