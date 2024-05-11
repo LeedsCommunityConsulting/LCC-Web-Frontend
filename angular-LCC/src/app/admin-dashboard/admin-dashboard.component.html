@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
+<!-- <app-sidebar></app-sidebar> -->
 
  <!-- CONTENT -->
  <section id="content">
@@ -30,7 +30,7 @@
         <li>
           <i class='bx bxs-calendar-check' ></i>
           <span class="text">
-            <h3>1020</h3>
+            <h3>{{events}}</h3>
             <p>Events</p>
           </span>
         </li>
@@ -39,8 +39,18 @@
         <li>
           <i class='bx bxs-doughnut-chart' ></i>
           <span class="text">
-            <h3>2543</h3>
-            <p>Vacancies</p>
+            <h3>{{vacancyData}}</h3>
+            <p>Vacancy</p>
+          </span>
+        </li>
+      </a>
+
+      <a href="javascript:;" [routerLink]="['/admin/caseStudies']">
+        <li>
+          <i class='bx bxs-message-dots' ></i>
+          <span class="text">
+            <h3>{{caseStudies}}</h3>
+            <p>Case Studies</p>
           </span>
         </li>
       </a>
@@ -49,21 +59,13 @@
         <li>
           <i class='bx bxs-group' ></i>
           <span class="text">
-            <h3>2834</h3>
+            <h3>{{UsersData}}</h3>
             <p>Users</p>
           </span>
         </li>
       </a>
 
-      <a href="javascript:;" [routerLink]="['/admin/users']">
-        <li>
-          <i class='bx bxs-group' ></i>
-          <span class="text">
-            <h3>2834</h3>
-            <p>Users</p>
-          </span>
-        </li>
-      </a>
+      
     </ul>
 
 

@@ -1,5 +1,5 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AuthService } from '../services/auth.service';
@@ -11,7 +11,8 @@ declare var $ :any;
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, SidebarComponent, AdminHeaderComponent, FormsModule, NgFor],
   templateUrl: './admin-events.component.html',
-  styleUrl: './admin-events.component.scss'
+  styleUrl: './admin-events.component.scss',
+  schemas:  [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AdminEventsComponent {
   // @ViewChild('eventEditDetails') form!: NgForm;
@@ -23,20 +24,40 @@ export class AdminEventsComponent {
   public data : any = [];
   public editData : any = [];
   myForm: any = FormGroup ;
+  date: Date = new Date();
+  settings = {
+    bigBanner: true,
+  timePicker: false,
+  format: 'dd-MM-yyyy',
+  defaultOpen: true
+}
+    
   eventDetails = {
     title: '',
-    time: '',
+  
     place: '',
+    startTime: '',
+    endTime: '',
+    imageURL: '',
+    isPublished: '',
+    typeOfEvent: '',
+    
   };
 
   eventEditDetails: any = {
     title: '',
-    time: '',
+   
     place: '',
+    startTime: '',
+    endTime: '',
+    imageURL: '',
+    isPublished: '',
+    typeOfEvent: '',
   };
   constructor(private auth: AuthService,
               public api : ApiService){
     this.getAllEvents();
+    
   }
   addToggle()
   {
@@ -51,7 +72,7 @@ export class AdminEventsComponent {
 
   submitForm(form: any): void {
     if (form.valid) {
-      console.log('Form data:', this.eventDetails);
+      // console.log('Form data:', this.eventDetails);
       this.api.dPost('addEvents', this.eventDetails).subscribe((res : any) => {  
         console.log(res);
         $("#add-event-modal").modal('hide');
@@ -134,8 +155,13 @@ export class AdminEventsComponent {
     $("#editEventsId").val(this.editData.id.S);
     this.myForm.setValue({
       title: this.editData.title.S,
-      time: this.editData.time.S,
-      place: this.editData.place.S
+      // time: this.editData.time.S,
+      place: this.editData.place.S,
+      startTime: this.editData.startTime.S,
+      endTime: this.editData.endTime.S,
+      imageURL: this.editData.imageURL.S,
+      isPublished: this.editData.isPublished.S,
+      typeOfEvent: this.editData.typeOfEvent.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }
@@ -167,7 +193,12 @@ export class AdminEventsComponent {
     this.myForm = new FormGroup({
       title: new FormControl(''),
       place: new FormControl(''),
-      time: new FormControl('')
+      // time: new FormControl(''),
+      startTime: new FormControl(''),
+      endTime: new FormControl(''),
+      imageURL: new FormControl(''),
+      isPublished: new FormControl(''),
+      typeOfEvent: new FormControl('')
     });
   }
 

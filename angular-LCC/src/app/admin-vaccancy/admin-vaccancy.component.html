@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
+
 <section id="content">
     <!-- NAVBAR -->
     <app-admin-header></app-admin-header>
@@ -83,7 +83,7 @@
           
 
           <div class="container">
-            <h2 class="heading">Create New vacancy</h2>
+            <h2 class="heading" style="text-align: center;color: #5c821a;font-weight: 400;">Create New vacancy</h2>
             <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)" >
               <div class="form-group">
                 <label for="title">Title</label>
@@ -98,6 +98,26 @@
               <div class="form-group">
                 <label for="availablity">Availablity</label>
                 <input type="text" class="form-control" id="availablity" name="availablity"  [(ngModel)]="eventDetails.availablity" required>
+              </div>
+
+              <div class="form-group">
+                <label for="jobType">Job Type</label>
+                <input type="text" class="form-control" id="jobType" name="jobType"  [(ngModel)]="eventDetails.jobType" required>
+              </div>
+
+              <div class="form-group">
+                <label for="duration">Duration</label>
+                <input type="text" class="form-control" id="duration" name="duration"  [(ngModel)]="eventDetails.duration" required>
+              </div>
+
+              <div class="form-group">
+                <label for="experienceLevel">Experience Level</label>
+                <input type="text" class="form-control" id="experienceLevel" name="experienceLevel"  [(ngModel)]="eventDetails.experienceLevel" required>
+              </div>
+
+              <div class="form-group">
+                <label for="isPublished">Is Published</label>
+                <input type="text" class="form-control" id="isPublished" name="isPublished"  [(ngModel)]="eventDetails.isPublished" required>
               </div>
           
               <!-- <div class="form-group">

@@ -3,7 +3,10 @@
 header {
     background-color: $primary;
     box-shadow: 0 1px 8px 0 rgba(32, 33, 36, 0.28);
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
 
     .header-inner {
         padding: 0;
@@ -23,8 +26,8 @@ header {
                 size: cover;
             }
 
-            width: 251px;
-            height: 34px;
+            width: 99px;
+            height: 80px;
             display: inline-block;
             margin-bottom: 0;
 
@@ -66,7 +69,7 @@ header {
                 position: absolute;
                 height: 3px;
                 width: 100%;
-                background: $primary;
+                background: white;
                 border-radius: 5px;
                 opacity: 1;
                 left: 0;
@@ -207,6 +210,11 @@ header {
             padding: 1rem 0;
             transition: 0.3s;
             border-bottom: solid .2rem transparent;
+
+            @media(max-width: 991px) {
+                color: #5C821A;
+                text-align: center;
+            }
 
             &:hover {
                 color: $dark-grey;

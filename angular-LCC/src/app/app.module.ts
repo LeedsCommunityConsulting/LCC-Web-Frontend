@@ -11,6 +11,10 @@ import { ConstantService } from './services/constant.service';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgxSplideModule } from 'ngx-splide';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    EditorModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
@@ -27,8 +32,12 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     SlickCarouselModule,
+    NgxSplideModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    AngularDateTimePickerModule
   ],
   providers: [ConstantService],
   bootstrap: [AppComponent]

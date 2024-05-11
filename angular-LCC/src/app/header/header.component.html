@@ -2,43 +2,39 @@
     <div class="container">
         <div class="header-inner">
             <a href="/" class="logo" alt="LCC"></a>
-            <div class="mobile-menu">
+            <div class="mobile-menu" [ngClass]="{ 'open' : navToggle  }" (click)="toggleNav()">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
 
-            <div class="hdr-right">
-                <!-- <div class="search">
-                    <a href="javascrtipt:;" class="link-member">Member Area</a>
-                </div> -->
-
+            <div class="hdr-right" [ngClass]="{ 'mw-show' : navToggle }">
                 <nav class="nav-menu ">
                     <ul class="navbar-nav">
-                        <li class="drop-down nav-item dropdown" >
-                            <a class="nav-link dropdown-toggle" href="javascript:;" 
+                        <li class="nav-item " >
+                            <a class="nav-link" href="javascript:;" 
                             [routerLink]="['/about-us']">About Us</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
-                            <a class="nav-link dropdown-toggle" href="javascript:;" 
+                            <a class="nav-link " href="javascript:;" 
                             [routerLink]="['/vacancies']">Vacancies</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
-                            <a class="nav-link dropdown-toggle" href="javascript:;" 
-                                data-toggle="dropdown">Clients</a>
+                            <a class="nav-link " href="javascript:;" 
+                            [routerLink]="['/clients']" >Clients</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
-                            <a class="nav-link dropdown-toggle" href="javascript:;" 
-                                [routerLink]="['/events']" data-toggle="dropdown">Events</a>
+                            <a class="nav-link " href="javascript:;" 
+                                [routerLink]="['/events']" >Events</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
-                            <a class="nav-link dropdown-toggle" href="javascript:;" 
-                            [routerLink]="['/faqs']" data-toggle="dropdown">FAQ</a>
+                            <a class="nav-link " href="javascript:;" 
+                            [routerLink]="['/faqs']" >FAQ</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
-                            <a class="nav-link dropdown-toggle" href="http://localhost:4200/admin/login" 
-                            data-toggle="dropdown">Portal</a>
+                            <a class="nav-link" [routerLink]="['/admin/login']"
+                            >Portal</a>
                         </li>
                     </ul>
                 </nav>

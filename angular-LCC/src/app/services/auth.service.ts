@@ -47,12 +47,12 @@ export class AuthService {
   	console.log(this.apiUrl)
   	return this.http.post(this.apiUrl+"auth/login", datas, {headers: {'Content-Type': 'application/json'}}).toPromise();
   }
-  // forgotEmail(datas) {
-  //   return this.http.post(this.apiUrl+"/auth/forgot-email", datas).toPromise();
-  // }
-  // resetPass(datas) {
-  //   return this.http.post(this.apiUrl+"/auth/reset-password", datas).toPromise();
-  // }
+  forgotEmail(datas: any) {
+    return this.http.post(this.apiUrl+"auth/forgotPassword", datas, {headers: {'Content-Type': 'application/json'}}).toPromise();
+  }
+  resetPass(id: any, token: any,datas:any) {
+    return this.http.post(this.apiUrl+"auth/resetPassword/"+id+"/"+token, datas, {headers: {'Content-Type': 'application/json'}}).toPromise();
+  }
   
   // impersonate(datas) {
   //   console.log(this.apiUrl)

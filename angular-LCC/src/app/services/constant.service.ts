@@ -7,10 +7,10 @@ import { BehaviorSubject, Observable, Subject } from "rxjs";
 export class ConstantService {
 
   // public environment : string = "staging";
-   public apiUrl  : string = "http://localhost:3000/";
-  // public apiUrl  : string = "http://127.0.0.1:8000/api/v1/";
-   public baseUrl : string = "http://localhost:3000/";
-  // public baseUrl : string = "http://localhost:4200/";
+  //  public apiUrl  : string = "http://localhost:8800/";
+   public apiUrl  : string = "http://18.132.40.56/";
+   public baseUrl : string = "http://18.132.40.56/";
+  // public baseUrl : string = "http://localhost:8800/";
 
   constructor() { }
 

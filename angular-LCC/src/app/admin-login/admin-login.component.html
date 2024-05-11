@@ -2,21 +2,22 @@
 <body>
     <div class="wrapper">
         <form [formGroup]="loginForm" (ngSubmit)="doLogin()" autocomplete="off">
-            <h1>LCC</h1>
+            <h1>LCC ADMIN</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" [ngClass]="{ 'error': loginForm.controls['email'].errors }"
+                <input type="text" placeholder="Username" 
                 formControlName="email" id="email" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="password" [ngClass]="{ 'error': loginForm.controls['password'].errors }"
+                <input type="password" placeholder="password"
                 formControlName="password" id="password"required>
                 <i class='bx bxs-lock-alt'></i>
+                <span class="vaild-pass" *ngIf="has_error">*Username or Password is incorrect</span>
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox">Remember me
                 </label>
-                <a href="#">Forgot password?</a>
+                <a href="javascript:;" [routerLink]="['/admin/forgot-pwd']">Forgot password?</a>
             </div>
             <button type="submit" class="btn">Login</button>
             <!-- <div class="register-link">

@@ -21,6 +21,7 @@ export class ApiService {
     deleteVacancy             : "vacancy",
     updateVacancy             : "vacancy/updateVacancy",
     getAllCaseStudies         : "caseStudies/getAllCaseStudies",
+    getUniqueCaseStudy        : "caseStudies",
     addCaseStudies            : "caseStudies/addCaseStudies",
     deleteCaseStudy           : "caseStudies",
     updateCaseStudy           : "caseStudies/updateCaseStudy",
@@ -71,18 +72,47 @@ export class ApiService {
       } 
   }
 
+  dGetCaseStudies(url: any, id: number) : Observable<any> {
+    try {
+      var AH = "";
+      // let params = new HttpParams();
+      // if(passparams) {
+      //   Object.keys(passparams).forEach(function (key) {
+      //        params = params.append(key, passparams[key]);
+      //   });
+      //  }
+      this.authUser = localStorage.getItem("authUser") ? JSON.parse(localStorage.getItem("authUser")!) : ""; 
+      //  if(this.authUser) {
+      //    params = params.append('user_id', this.authUser.user.id);
+      //    var AH = this.authUser.token_type+" "+this.authUser.access_token;
+      //  }
+
+       let httpOptions = {};
+
+      return this.http.get<any>(this.apiUrl+this.urls[url]+"/"+id, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+    } catch ( e ) {
+      console.log(e);
+      return throwError(e);
+    } 
+}
+
   dPost(url: any, body: any) : Observable<any> {
       try {
         this.authUser = localStorage.getItem("authUser") ? JSON.parse(localStorage.getItem("authUser")!) : ""; 
         let httpOptions = {};
         if(this.authUser) {
+          const token = this.authUser.token_type + " " + this.authUser;
           httpOptions = { 
             headers: new HttpHeaders({
-              'Authorization':  this.authUser.token_type+" "+this.authUser.access_token
+              'Authorization': token,
+              'Content-Type': 'application/json',
             })
           };
         } 
-        return this.http.post<any>(this.apiUrl+this.urls[url], body, httpOptions)
+        return this.http.post<any>(this.apiUrl+this.urls[url], body, {headers: {'authorization': this.authUser,}})
       .pipe(
         catchError(this.handleError)
       );

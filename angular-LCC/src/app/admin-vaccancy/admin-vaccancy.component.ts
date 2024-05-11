@@ -26,12 +26,20 @@ export class AdminVaccancyComponent {
     title: '',
     description: '',
     availablity: '',
+    jobType: '',
+    duration: '',
+    experienceLevel: '',
+    isPublished: ''
   };
 
   eventEditDetails: any = {
     title: '',
     description: '',
     availablity: '',
+    jobType: '',
+    duration: '',
+    experienceLevel: '',
+    isPublished: ''
   };
   constructor(private auth: AuthService,
               public api : ApiService){
@@ -134,7 +142,11 @@ export class AdminVaccancyComponent {
     this.myForm.setValue({
       title: this.editData.title.S,
       description: this.editData.description.S,
-      availablity: this.editData.noOfAvailablity.S
+      availablity: this.editData.noOfAvailablity.S,
+      jobType: this.editData.jobType.S,
+      duration: this.editData.duration.S,
+      experienceLevel: this.editData.experienceLevel.S,
+      isPublished: this.editData.isPublished.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }
@@ -166,7 +178,11 @@ export class AdminVaccancyComponent {
     this.myForm = new FormGroup({
       title: new FormControl(''),
       availablity: new FormControl(''),
-      description: new FormControl('')
+      description: new FormControl(''),
+      jobType: new FormControl(''),
+      duration: new FormControl(''),
+      experienceLevel: new FormControl(''),
+      isPublished: new FormControl('')
     });
   }
 

@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
+
 <section id="content">
     <!-- NAVBAR -->
     <app-admin-header></app-admin-header>
@@ -83,7 +83,7 @@
           
 
           <div class="container">
-            <h2 class="heading">Create New Event</h2>
+            <h2 class="heading" style="text-align: center;color: #5c821a;font-weight: 400;">Create New Event</h2>
             <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)" >
               <div class="form-group">
                 <label for="title">Title</label>
@@ -91,14 +91,43 @@
               </div>
               
               <div class="form-group">
-                <label for="time">Time</label>
-                <input type="text" class="form-control" id="time" name="time" [(ngModel)]="eventDetails.time" required>
+                <label for="startTime">Start Time</label>
+                <angular2-date-picker class="form-control" [(ngModel)]="date" [settings]="settings" style="padding: 1.2rem 0.1rem;"></angular2-date-picker>
+                <!-- <input type="text" class="form-control" id="startTime" name="startTime" [(ngModel)]="eventDetails.startTime" required> -->
+              </div>
+
+              <!-- <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
+<owl-date-time #dt1></owl-date-time> -->
+
+              <div class="form-group">
+                <label for="endTime">End Time</label>
+                <input type="text" class="form-control" id="endTime" name="endTime" [(ngModel)]="eventDetails.endTime" required>
               </div>
           
               <div class="form-group">
                 <label for="place">Place</label>
                 <input type="text" class="form-control" id="place" name="place"  [(ngModel)]="eventDetails.place" required>
               </div>
+
+              <div class="form-group">
+                <label for="imageURL">Image Url</label>
+                <input type="text" class="form-control" id="imageURL" name="imageURL" [(ngModel)]="eventDetails.imageURL" required>
+              </div>
+
+              <div class="form-group">
+                <label for="isPublished">Is Published</label>
+                <input type="text" class="form-control" id="isPublished" name="isPublished" [(ngModel)]="eventDetails.isPublished" required>
+              </div>
+
+              <div class="form-group">
+                <label for="typeOfEvent">Type Of Event</label>
+                <input type="text" class="form-control" id="typeOfEvent" name="typeOfEvent" [(ngModel)]="eventDetails.typeOfEvent" required>
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="time">Fee</label>
+                <input type="text" class="form-control" id="time" name="time" [(ngModel)]="eventDetails.time" required>
+              </div> -->
           
               <!-- <div class="form-group">
                 <label for="gender">Event Status</label>
@@ -215,11 +244,35 @@
                               </label>
                             </div>
                             <div class="form-group">
-                              <label for="time">
-                                Time:
-                                <input class="form-control" formControlName="time" placeholder="Time">
-                              </label>
+                                <label for="startTime">
+                                    Start Time:
+                                  <input class="form-control" formControlName="startTime" placeholder="startTime">
+                                </label>
                             </div>
+                            <div class="form-group">
+                                <label for="endTime">
+                                    End Time:
+                                  <input class="form-control" formControlName="endTime" placeholder="endTime">
+                                </label>
+                              </div>
+                              <div class="form-group">
+                                <label for="imageURL">
+                                    Image Url:
+                                  <input class="form-control" formControlName="imageURL" placeholder="imageURL">
+                                </label>
+                              </div>
+                              <div class="form-group">
+                                <label for="isPublished">
+                                    Is Published:
+                                  <input class="form-control" formControlName="isPublished" placeholder="isPublished">
+                                </label>
+                              </div>
+                              <div class="form-group">
+                                <label for="typeOfEvent">
+                                    Type Of Event:
+                                  <input class="form-control" formControlName="typeOfEvent" placeholder="typeOfEvent">
+                                </label>
+                              </div>
                             <div class="splitscreen">
                                 <div class="left">
                                     <input  type="submit"

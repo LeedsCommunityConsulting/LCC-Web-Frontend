@@ -5,26 +5,29 @@
             padding-right: 0;
             padding-left: 0;
         }
+        padding-bottom: 0;
     }
 }
 
 .meetTeam{
     margin-bottom: 40px;
     figure{
-        height: 529px;
+        height: 350px;
         width: 100%;
         overflow: hidden;
         border-radius: 10px;
         @media (max-width: 992px){
             border-radius: 0;
-            height: auto;
+            height: 350px;
+            width: 100%;
         }
         img{
             width: 100%;
             height: 100%;
             object-fit: cover;
             @media (max-width: 992px){
-                height: auto;
+                height: 350px;
+                width: 100%;
             }
         }
     }
@@ -99,11 +102,11 @@
 }
 
 .welcome-wrap {
-    padding: 70px 0;
+    padding-top: 120px;
     max-width: 940px;
     margin: 0 auto;
     @media (max-width: 992px){
-        padding: 20px 0;
+        padding-top: 120px;
     }
     h3{
         font-weight: bold;
@@ -126,7 +129,7 @@
         }
         a{
             color: var(--green);
-            text-transform: uppercase;
+            // text-transform: uppercase;
             &:hover{
                 text-decoration: underline;
             }
@@ -325,8 +328,16 @@
     align-items: center;
     position: relative;
 
+    @media(max-width: 991px) {
+        top: 70px;
+    }
+
+    @media (min-width:768px) {
+        top: 100px;
+    }
+
     background: {
-        image: url("/assets/img/uolabt.jpeg");
+        image: url("https://cdn.pixabay.com/photo/2023/10/25/07/02/lecturer-8339699_1280.jpg");
         repeat: no-repeat;
         position: center;
         size: cover;
@@ -339,9 +350,12 @@
 
     h1 {
         color: white;
-  display: inline-block;
-  background-color: rgba(0,0,0,.6);
-  font-weight: bold;
-  padding: 65px 150px 65px 150px;
+        display: inline-block;
+        background-color: rgba(0,0,0,.6);
+        font-weight: bold;
+        padding: 65px 150px 65px 150px;
+        @media(max-width: 991px) {
+            padding: 65px 100px 65px 100px;
+        }
     }
 }

@@ -1,0 +1,51 @@
+.ip-banner {
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    background: {
+        image: url("/assets/img/uolabt.jpeg");
+        repeat: no-repeat;
+        position: center;
+        size: cover;
+        color: white;
+    }
+
+    &.no-image {
+        background-image: none;
+    }
+
+    h1 {
+        color: white;
+        display: inline-block;
+        background-color: rgba(0,0,0,.6);
+        font-weight: bold;
+        padding: 65px 150px 65px 150px;
+        @media(max-width: 991px) {
+            padding: 65px 100px 65px 100px;
+        }
+    }
+}
+
+.main-title{
+    margin-bottom: 60px;
+    h1{
+        text-align: center;
+        font-size: 3.2rem;
+        font-weight: 700;
+    }
+    
+}
+
+.sub-section{
+    margin-bottom: 60px;
+    h2{
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+    p{
+        font-size: 1.8rem;
+    }
+}

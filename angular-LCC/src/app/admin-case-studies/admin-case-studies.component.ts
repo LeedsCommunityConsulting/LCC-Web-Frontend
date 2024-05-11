@@ -5,11 +5,12 @@ import { ApiService } from '../services/api.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AdminHeaderComponent } from '../admin-header/admin-header.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 declare var $ :any;
 @Component({
   selector: 'app-admin-case-studies',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, SidebarComponent, AdminHeaderComponent, FormsModule, NgFor],
+  imports: [CommonModule, ReactiveFormsModule, SidebarComponent, AdminHeaderComponent, FormsModule, NgFor, EditorModule],
   templateUrl: './admin-case-studies.component.html',
   styleUrl: './admin-case-studies.component.scss'
 })
@@ -29,6 +30,7 @@ export class AdminCaseStudiesComponent {
     objective: '',
     outcome: '',
     tagline: '',
+    isPublished: '',
   };
 
   eventEditDetails: any = {
@@ -38,6 +40,7 @@ export class AdminCaseStudiesComponent {
     objective: '',
     outcome: '',
     tagline: '',
+    isPublished: '',
   };
   constructor(private auth: AuthService,
               public api : ApiService){
@@ -144,6 +147,7 @@ export class AdminCaseStudiesComponent {
       objective: this.editData.objective.S,
       outcome: this.editData.outcome.S,
       tagline: this.editData.tagline.S,
+      isPublished: this.editData.isPublished.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }
@@ -179,6 +183,7 @@ export class AdminCaseStudiesComponent {
       objective: new FormControl(''),
       outcome: new FormControl(''),
       tagline: new FormControl(''),
+      isPublished: new FormControl('')
     });
   }
 

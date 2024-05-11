@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
+
 <section id="content">
     <!-- NAVBAR -->
     <app-admin-header></app-admin-header>
@@ -85,7 +85,7 @@
           
 
           <div class="container">
-            <h2 class="heading">Create New Case Study</h2>
+            <h2 class="heading" style="text-align: center;color: #5c821a;font-weight: 400;">Create New Case Study</h2>
             <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)" >
               <div class="form-group">
                 <label for="title">Title</label>
@@ -104,17 +104,42 @@
 
               <div class="form-group">
                 <label for="objective">Objective</label>
-                <input type="text" class="form-control" id="objective" name="objective"  [(ngModel)]="eventDetails.objective" required>
+                <editor apiKey="jl8etqdeiyo1huqfklfr5kmdilp62e9inikm8ki2satag9jw"
+              [init]="{
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                mergetags_list: [
+                  { value: 'First.Name', title: 'First Name' },
+                  { value: 'Email', title: 'Email' },
+                ],
+              }" class="form-control" id="objective" name="objective"  [(ngModel)]="eventDetails.objective" ></editor>
               </div>
 
               <div class="form-group">
                 <label for="outcome">Outcome</label>
-                <input type="text" class="form-control" id="outcome" name="outcome"  [(ngModel)]="eventDetails.outcome" required>
+                <editor apiKey="jl8etqdeiyo1huqfklfr5kmdilp62e9inikm8ki2satag9jw"
+              [init]="{
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                mergetags_list: [
+                  { value: 'First.Name', title: 'First Name' },
+                  { value: 'Email', title: 'Email' },
+                ],
+              }" class="form-control" id="outcome" name="outcome"  [(ngModel)]="eventDetails.outcome" required></editor>
               </div>
 
               <div class="form-group">
                 <label for="tagline">Tagline</label>
                 <input type="text" class="form-control" id="tagline" name="tagline"  [(ngModel)]="eventDetails.tagline" required>
+              </div>
+
+              <div class="form-group">
+                <label for="isPublished">Is Published</label>
+                <input type="text" class="form-control" id="isPublished" name="isPublished"  [(ngModel)]="eventDetails.isPublished" required>
               </div>
           
               <!-- <div class="form-group">
