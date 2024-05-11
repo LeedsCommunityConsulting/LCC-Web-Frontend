@@ -2,12 +2,17 @@
 <section class="home-banner">
     <a href="#" class="banner-prev"></a>
     <a href="#" class="banner-next"></a>
-    <ngx-slick-carousel class="home-banner-slider" [config]="homeSlider" data-slick='{"autoplaySpeed": 7000}'>
-
-        <div ngxSlickItem class="item home-slide-item"
-        style="background-image: url({{ slide?.img  }})" *ngFor="let slide of slides">
-            <div class="container" style="position: relative;bottom: 45%;">
-                <div class="ban-text" style="position: absolute;margin-left: 20%;">
+    <ngx-slick-carousel class="carousel" 
+                        #slickModal="slick-carousel" 
+                        [config]="homeSlider" 
+                        (init)="slickInit($event)"
+                        (breakpoint)="breakpoint($event)"
+                        (afterChange)="afterChange($event)"
+                        (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let slide of slides" class="item home-slide-item" [style.background-image]="'url(' + slide?.src + ')'">
+              <!-- <img src="{{ slide.src }}" alt="" width="100%"> -->
+              <div class="container" style="position: relative;bottom: 28%;">
+                <div class="ban-text" style="position: absolute;">
                     <div>
                     <h2>{{slide?.text}}</h2>
                     <p>{{slide?.subtext}}</p>
@@ -16,67 +21,83 @@
                 </div>
             </div>
         </div>
-
-    </ngx-slick-carousel>
+</ngx-slick-carousel>
 </section>
+
+
 <section class="vision" id="vision">
     <div class="container">
         <h1 style="color: #324819; font-size: 40px;font-weight: bold;text-align: center;">LEEDS COMMUNITY CONSULTING</h1>
         <img class="center" src="/assets/img/LCC-HomeL.svg" alt="">
         <hr class="hr-custom">
-        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;">WHAT WE DO</h3>
-        <p style="color: #324819;font-weight: bold;text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">WHAT WE DO</h3>
+        <div>
+            <p style="color: #324819;font-weight: bold;">
+                LCC is a student-led pro-bono consultancy firm.
+            </p>
+            <p class="contentText">Our aims include:</p> 
+            <ul style="color: #324819;font-weight: bold;">
+                <li>enabling students to gain real world experience first-hand</li>
+                <li>providing a positive social impact to the local Leeds community</li>
+            </ul>
+            <p class="contentText">
+                We aim to provide value in our local community. We attract the most intelligent and enthusiastic
+                minds in Leeds and match them with clients that come to us with a variety of issues and aims!
+            </p>
+            <hr class="hr-custom" >
+            <p class="contentText" style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">Why LCC?</p> 
+            <ul style="color: #324819;font-weight: bold;">
+                <li>Free yet professional services</li>
+                <li>Access to fresh perspective and creative minds of students</li>
+                <li>Wide variety of skill sets brought to the project</li>
+            </ul>
+            <hr class="hr-custom" >
+            <p class="contentText" style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">What we can offer</p> 
+            <p class="contentText">We have the skills to assist you in the following areas:</p> 
+            <ul style="color: #324819;font-weight: bold;">
+                <li>Consumer & Market Research</li>
+                <li>Operations Management</li>
+                <li>Brand & Communication</li>
+                <li>Data Analytics</li>
+                <li>Business Strategy</li>
+            </ul>
+        </div>
         <hr class="hr-custom">
-        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;">TESTIMONIALS</h3>
-        <p style="color: #324819;font-weight: bold;text-align: center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">TESTIMONIALS</h3>
+        <p style="color: #324819;font-weight: bold;text-align: center;">The following testimonials are excerpts of feedback from clients we’ve had the pleasure of working
+            with.</p>
         <div class="testimonialsrow">
-            <div class="testimonialscolumn">
-                <div class="card">
+            <div class="testimonialscolumn" *ngFor="let testimonialas of data">
+                <div class="card" >
                     <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
                     <div class="container">
-                        <h4><b>Company Name</b></h4> 
+                        <h4><b>{{testimonialas.title?.S}}</b></h4> 
                         <p>Feedback</p> 
-                    </div>
-                </div>
-            </div>
-            <div class="testimonialscolumn">
-                <div class="card">
-                    <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
-                    <div class="container">
-                        <h3><b>Company Name</b></h3> 
-                        <p>Feedback</p> 
-                    </div>
-                </div>
-            </div>
-            <div class="testimonialscolumn">
-                <div class="card">
-                    <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
-                    <div class="container">
-                      <h4><b>Company Name</b></h4> 
-                      <p>Feedback</p> 
                     </div>
                 </div>
             </div>
         </div>
         <hr class="hr-custom">
-        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;">WORK WITH US</h3>
-        <div id="cover">
-            <div class="covertileone">
-                <img class="coverimg" src="/assets/img/slide1.jpg">
-                <div class="text-block-one">BECOME A <br>CONSULTANT</div>
+
+        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 25px;">WORK WITH US</h3>
+        <div class="grid-container">
+            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 1">
+                <a href="javascript:;" [routerLink]="['/vacancies']">
+                    <div class="centered-text">BECOME A CONSULTANT</div>
+                </a>
             </div>
-            
-            <div class="covertiletwo">
-                <img class="coverimg" src="/assets/img/slide1.jpg">
-                <div class="text-block-two">HIRE OUR <br>SERVICES</div>
+            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 2">
+                <div class="centered-text">HIRE OUR SERVICES</div>
             </div>
-            <div class="covertilethree">
-                <img class="coverimg" src="/assets/img/slide1.jpg">
-                <div class="text-block-three">CONTACT US</div>
+            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 3">
+                <a href="javascript:;" [routerLink]="['/contact-us']">
+                    <div class="centered-text">CONTACT US</div>
+                </a>
             </div>
-            <div class="covertilefour">
-                <img class="coverimg" src="/assets/img/slide1.jpg">
-                <div class="text-block-four">VACANCIES</div>
+            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 4">
+                <a href="javascript:;" [routerLink]="['/vacancies']">
+                    <div class="centered-text">VACANCIES</div>
+                </a>
             </div>
         </div>
     </div>

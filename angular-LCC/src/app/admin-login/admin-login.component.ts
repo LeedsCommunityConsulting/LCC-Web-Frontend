@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ConstantService } from '../services/constant.service';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-admin-login',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,FormsModule],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule, RouterModule],
   templateUrl: './admin-login.component.html',
   styleUrl: './admin-login.component.scss'
 })
@@ -27,6 +27,7 @@ export class AdminLoginComponent {
   public loginsubmitted : boolean = false;
   public isLoggedIn: Observable<boolean> = new Observable<boolean>();
   public authUser : any = "";
+  public has_error : boolean = false;
 
   constructor(private api:ApiService,
               private constant:ConstantService,
@@ -51,6 +52,7 @@ export class AdminLoginComponent {
   doLogin(): void{
     this.loginsubmitted = true;
     if (this.loginForm.invalid) {
+      this.has_error = true;
             return;
     }
     if(this.lS) {
@@ -72,8 +74,9 @@ export class AdminLoginComponent {
     	console.log(response.token);
       this.lS = false;
     	this.loginsuccess = "Login Succcess";
+      this.has_error = false;
     	this.auth.storeauthdata(response.token);
-      console.log(this.constant.getAuth())
+      console.log(response.token)
     	let that = this;
     	setTimeout(function(){
     		that.goToDashboard();
@@ -83,6 +86,7 @@ export class AdminLoginComponent {
         this.loginerror = error.error.message;
         this.auth.clearauthdata();
         this.lS = false;
+        this.has_error = true;
         this.loginsubmitted = false;
       })
   }

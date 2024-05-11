@@ -5,7 +5,7 @@
 }
 
 .home-banner {
-    height: 368px;
+    height: 95vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -17,6 +17,10 @@
         text-align: left;
     }
 
+    .banCon{
+        position: relative;
+        bottom: 45%;
+    }
 
     .ban-text {
         font-size: 3.2rem;
@@ -26,6 +30,7 @@
         font-family: $light-font-family;
         padding: 2rem 4rem;
         max-width: 470px;
+        position: absolute;
 
         @media (min-width:768px) {
             font-size: 3.5rem;
@@ -33,6 +38,24 @@
             // padding: 15px 15px 15px 15px;
             background-color: rgba(0, 0,0,0.5);
             text-align: left;
+            h2{
+                font-size: 5rem;
+                font-weight: bold;
+            }
+        }
+
+        @media (max-width:978px){
+            font-size: 3.5rem;
+            // padding: 0;
+            // padding: 15px 15px 15px 15px;
+            margin-left: 5% !important;
+            margin-right: 10%;
+            background-color: rgba(0, 0,0,0.5);
+            text-align: left;
+            h2{
+                font-size: 4rem;
+                font-weight: bold;
+            }
         }
 
         p {
@@ -118,7 +141,7 @@
     .home-banner-slider {
         max-width: 100%;
         margin-left: auto;
-        height: 100%;
+        height: 100vh;
         align-items: center;
         display: flex;
     }
@@ -569,7 +592,7 @@
 
 
 .home-banner .slick-slide {
-    height: 368px;
+    height: 100vh;
     max-width: 100%;
     align-items: center;
     display: flex;
@@ -730,3 +753,49 @@ body .slick-next {
     margin: 0;
     text-align: center;
   }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust the minimum width and number of columns as needed */
+    gap: 20px; /* Adjust the gap between grid items */
+
+    @media (min-width:768px) {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    
+  }
+  
+  .grid-item {
+    width: 100%;
+    position: relative;
+  }
+  
+  .grid-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .centered-text {
+    position: absolute;
+    color: #ffffff;
+    font-size: 3rem;
+    text-align: center;
+    font-family: "proxima_nova_rgsbold", Arial, Helvetica, sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.contentText{
+    color: #324819 !important;
+    font-weight: bold;
+}
+
+ul {
+    li{
+        list-style-type: square;
+        font-size: 2.1rem;
+        margin-bottom: 2.5rem;
+    }
+}

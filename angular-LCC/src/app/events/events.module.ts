@@ -11,7 +11,7 @@ import { EventsComponent } from './events.component';
     CommonModule,
     EventsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports : [
     EventsComponent,
