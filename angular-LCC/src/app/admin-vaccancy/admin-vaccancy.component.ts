@@ -25,21 +25,23 @@ export class AdminVaccancyComponent {
   eventDetails = {
     title: '',
     description: '',
-    availablity: '',
+    noOfAvailablity: '',
     jobType: '',
     duration: '',
     experienceLevel: '',
-    isPublished: ''
+    isPublished: '',
+    applyURL: ''
   };
 
   eventEditDetails: any = {
     title: '',
     description: '',
-    availablity: '',
+    noOfAvailablity: '',
     jobType: '',
     duration: '',
     experienceLevel: '',
-    isPublished: ''
+    isPublished: '',
+    applyURL: ''
   };
   constructor(private auth: AuthService,
               public api : ApiService){
@@ -142,11 +144,12 @@ export class AdminVaccancyComponent {
     this.myForm.setValue({
       title: this.editData.title.S,
       description: this.editData.description.S,
-      availablity: this.editData.noOfAvailablity.S,
+      noOfAvailablity: this.editData.noOfAvailablity.S,
       jobType: this.editData.jobType.S,
       duration: this.editData.duration.S,
       experienceLevel: this.editData.experienceLevel.S,
-      isPublished: this.editData.isPublished.S
+      isPublished: this.editData.isPublished.S,
+      applyURL: this.editData.applyURL.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }
@@ -177,12 +180,13 @@ export class AdminVaccancyComponent {
   ngOnInit() {
     this.myForm = new FormGroup({
       title: new FormControl(''),
-      availablity: new FormControl(''),
+      noOfAvailablity: new FormControl(''),
       description: new FormControl(''),
       jobType: new FormControl(''),
       duration: new FormControl(''),
       experienceLevel: new FormControl(''),
-      isPublished: new FormControl('')
+      isPublished: new FormControl(''),
+      applyURL: new FormControl('')
     });
   }
 

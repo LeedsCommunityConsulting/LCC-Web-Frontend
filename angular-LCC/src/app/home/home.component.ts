@@ -19,7 +19,7 @@ import { ApiService } from '../services/api.service';
 })
 export class HomeComponent {
   homeSlider = {
-    "slidesToShow": 1, "slidesToScroll": 1, "dots": false, "autoplay": true, "autoplaySpeed": 2000,"speed":1000, "infinite": true ,"arrows": false
+    "slidesToShow": 1, "slidesToScroll": 1, "dots": false, "autoplay": false, "autoplaySpeed": 2000,"speed":1000, "infinite": true ,"arrows": false
   };
 
   public jobCards: any;

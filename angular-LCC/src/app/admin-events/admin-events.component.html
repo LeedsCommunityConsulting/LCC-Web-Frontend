@@ -34,6 +34,7 @@
       <a href="javascript:;" class="btn-download" (click)="addEvent()">
         <i class='bx bxs-cloud-download' ></i>
         <span class="text">Add Event</span>
+        
       </a>
     </div>
 
@@ -49,9 +50,7 @@
             <tr>
               <th>Title</th>
               <th>Date</th>
-              <th>Time</th>
               <th>Place</th>
-              <th>Event Status</th>
               <th>Publish Status</th>
             </tr>
           </thead>
@@ -61,16 +60,171 @@
                 <img src="https://img.playbook.com/IZSaaisbuPYRUSQYBZckzA61Px-1dJx2_5pGRp3N4dk/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzRkZmUwYjQ2/LWRhNjAtNDQ2Yy1h/Y2UxLWM0ZTZkMGI3/NTdlMA">
                 <p>{{datas.title?.S}}</p>
               </td>
-              <td>20th April</td>
-              <td>10am-2pm</td>
-              <td>Leeds University Union</td>
-              <td><span class="status completed">Completed</span></td>
-              <td><span class="status pending">Not Published</span></td>
+              <td>{{datas.startTime?.S}}</td>
+              <td>{{datas.place?.S}}</td>
+              <td><span class="status" [ngClass]="datas.isPublished?.S == '1' ? 'completed' : 'pending'">{{datas.isPublished?.S == '1' ? "Published" : "Not Published"}}</span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+
+    <div class="container hide-data" id="createEventBlock">
+      <h1 class="heading" style="text-align: center;color: #5c821a;font-weight: 600;">Create New Event</h1>
+      <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)" >
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" style="height: 40px;" class="form-control" id="title" name="title" [(ngModel)]="eventDetails.title" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="startTime">Start Time</label>
+          <!-- <input type="text" class="form-control" id="startTime" name="startTime" [(ngModel)]="eventDetails.startTime" required> -->
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" id="startDate" name="startDate" [(ngModel)]="eventDetails.startDate" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="time" style="height: 22px;" placeholder="Choose a time" class="form-control" id="startTime" name="startTime" [(ngModel)]="eventDetails.startTime" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label for="endTime">End Time</label>
+          <!-- <input type="text" class="form-control" id="endTime" name="endTime" [(ngModel)]="eventDetails.endTime" required> -->
+          <mat-form-field>
+            <input matInput [matDatepicker]="endDatePicker" id="endDate" name="endDate" [(ngModel)]="eventDetails.endDate" >
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #endDatePicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="time" style="height: 22px;" class="form-control" id="endTime" name="endTime" [(ngModel)]="eventDetails.endTime" required>
+          </mat-form-field>
+        </div>
+    
+        <div class="form-group">
+          <label for="place">Place</label>
+          <input type="text" style="height: 40px;" class="form-control" id="place" name="place"  [(ngModel)]="eventDetails.place" required>
+        </div>
+
+        <div class="form-group">
+          <label for="imageURL">Image Url</label>
+          <input type="text" style="height: 40px;" class="form-control" id="imageURL" name="imageURL" [(ngModel)]="eventDetails.imageURL" required>
+        </div>
+
+        <div class="form-group">
+          <label for="isPublished">Is Published</label>
+          <select class="form-control" style="height: 40px;" id="isPublished" name="isPublished" [(ngModel)]="eventDetails.isPublished" required>
+            <option [value]="1">Yes</option>
+            <option [value]="0">No</option>
+          </select> 
+        </div>
+
+        <div class="form-group">
+          <label for="typeOfEvent">Type Of Event</label>
+          <input type="text" style="height: 40px;" class="form-control" id="typeOfEvent" name="typeOfEvent" [(ngModel)]="eventDetails.typeOfEvent" required>
+        </div>
+
+        <div class="form-group">
+          <label for="fee">Fee</label>
+          <input type="text" style="height: 40px;" class="form-control" id="fee" name="fee" [(ngModel)]="eventDetails.fee" required>
+        </div>
+
+        <div class="splitscreen">
+          <div class="left">
+              <input  type="submit"
+              class="btn-events"  >
+          </div>
+        
+          <div class="right">
+              <button type="button" class="btn-events-close" (click)="closeModal()">
+                  cancel
+                  </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="container hide-data" id="editEventBlock">
+      <h1 class="heading" style="text-align: center;color: #5c821a;font-weight: 600;">Edit Event</h1>
+      <input type="hidden" value="" id="editEventsId">
+      <form [formGroup]="myForm" (ngSubmit)="updateEventsForm(myForm)">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" style="height: 40px;" class="form-control" formControlName="title" >
+        </div>
+        
+        <div class="form-group">
+          <label for="startTime">Start Time</label>
+          <mat-form-field>
+            <input matInput [matDatepicker]="epicker" id="startDate" name="startDate" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="epicker"></mat-datepicker-toggle>
+            <mat-datepicker #epicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="time" style="height: 22px;" placeholder="Choose a time" class="form-control" id="startTime" name="startTime" formControlName="startTime">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label for="endTime">End Time</label>
+          <mat-form-field>
+            <input matInput [matDatepicker]="eendDatePicker" id="endDate" name="endDate" formControlName="endDate" >
+            <mat-datepicker-toggle matSuffix [for]="eendDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #eendDatePicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="time" style="height: 22px;" class="form-control" id="endTime" name="endTime" formControlName="endTime">
+          </mat-form-field>
+        </div>
+    
+        <div class="form-group">
+          <label for="place">Place</label>
+          <input type="text" style="height: 40px;" class="form-control" id="place" name="place" formControlName="place" >
+        </div>
+
+        <div class="form-group">
+          <label for="imageURL">Image Url</label>
+          <input type="text" style="height: 40px;" class="form-control" id="imageURL" name="imageURL" formControlName="imageURL">
+        </div>
+
+        <div class="form-group">
+          <label for="isPublished">Is Published</label>
+          <select class="form-control" style="height: 40px;" id="isPublished" name="isPublished" formControlName="isPublished">
+            <option [value]="1">Yes</option>
+            <option [value]="0">No</option>
+          </select> 
+        </div>
+
+        <div class="form-group">
+          <label for="typeOfEvent">Type Of Event</label>
+          <input type="text" class="form-control" id="typeOfEvent" name="typeOfEvent" formControlName="typeOfEvent">
+        </div>
+
+        <div class="form-group">
+          <label for="typeOfEvent">Fee</label>
+          <input type="text" class="form-control" id="fee" name="fee" formControlName="fee">
+        </div>
+
+        <div class="splitscreen">
+          <div class="left">
+              <input  type="submit"
+              class="btn-events"  >
+          </div>
+        
+          <div class="right">
+              <button type="button" class="btn-events-close" (click)="closeModal()">
+                  cancel
+                  </button>
+          </div>
+        </div>
+        
+       
+        <!-- <span class="spinner-border" role="status" aria-hidden="true"></span> -->
+      </form>
+    </div>
+
   </main>
 
   <div class="modal fade" id="add-event-modal" tabindex="-1">
@@ -92,12 +246,17 @@
               
               <div class="form-group">
                 <label for="startTime">Start Time</label>
-                <angular2-date-picker class="form-control" [(ngModel)]="date" [settings]="settings" style="padding: 1.2rem 0.1rem;"></angular2-date-picker>
-                <!-- <input type="text" class="form-control" id="startTime" name="startTime" [(ngModel)]="eventDetails.startTime" required> -->
+                <!-- <angular2-date-picker class="form-control" [(ngModel)]="date" [settings]="settings" style="padding: 1.2rem 0.1rem;"></angular2-date-picker> -->
+                <input type="text" class="form-control" id="startTime" name="startTime" [(ngModel)]="eventDetails.startTime" required>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput type="time" placeholder="Choose a time">
+                </mat-form-field>
               </div>
-
-              <!-- <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
-<owl-date-time #dt1></owl-date-time> -->
 
               <div class="form-group">
                 <label for="endTime">End Time</label>
@@ -218,79 +377,7 @@
             </div>
             </div>
 
-            <div class="modal fade" id="edit-event-modal" tabindex="-1">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-body">
-                      <!-- <button type="button" class="close profile-close" data-dismiss="modal" aria-label="Close" #closeSignupKoala>
-                      <img src="assets/img/modal-close.svg" alt="icon" width="25" height="25" />
-                      </button> -->
-                      
             
-                      <div class="container">
-                        <h2 class="heading">Edit Event</h2>
-                        <input type="hidden" value="" id="editEventsId">
-                        <form [formGroup]="myForm" (ngSubmit)="updateEventsForm(myForm)">
-                            <div class="form-group">
-                              <label for="title">
-                                Title:
-                                <input class="form-control" formControlName="title" placeholder="Title">
-                              </label>
-                            </div>
-                            <div class="form-group">
-                              <label for="place">
-                                Place:
-                                <input class="form-control" formControlName="place" placeholder="place">
-                              </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="startTime">
-                                    Start Time:
-                                  <input class="form-control" formControlName="startTime" placeholder="startTime">
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="endTime">
-                                    End Time:
-                                  <input class="form-control" formControlName="endTime" placeholder="endTime">
-                                </label>
-                              </div>
-                              <div class="form-group">
-                                <label for="imageURL">
-                                    Image Url:
-                                  <input class="form-control" formControlName="imageURL" placeholder="imageURL">
-                                </label>
-                              </div>
-                              <div class="form-group">
-                                <label for="isPublished">
-                                    Is Published:
-                                  <input class="form-control" formControlName="isPublished" placeholder="isPublished">
-                                </label>
-                              </div>
-                              <div class="form-group">
-                                <label for="typeOfEvent">
-                                    Type Of Event:
-                                  <input class="form-control" formControlName="typeOfEvent" placeholder="typeOfEvent">
-                                </label>
-                              </div>
-                            <div class="splitscreen">
-                                <div class="left">
-                                    <input  type="submit"
-                                    class="btn-events"  >
-                                </div>
-                              
-                                <div class="right">
-                                    <button type="button" class="btn-events-close" (click)="closeModal()">
-                                        cancel
-                                    </button>
-                                </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-                </div>
-                </div>
-            </div>
 
             
 

@@ -16,11 +16,14 @@ declare var $ :any;
 export class AdminUsersComponent {
 
   status = true;
+  public roleidval : any;
+  public usernamerole : any;
   public successmsg = false;
   public warningmsg = false;
   public errormsg = false;
   public successMsgCnt : any = [];
   public data : any = [];
+  public roleData : any = [];
   public editData : any = [];
   myForm: any = FormGroup ;
   eventDetails = {
@@ -30,6 +33,9 @@ export class AdminUsersComponent {
     position: '',
     contactDetails: '',
     username: '',
+    imageURL: '',
+    testamonials: '',
+    role: ''
   };
 
   eventEditDetails: any = {
@@ -39,10 +45,14 @@ export class AdminUsersComponent {
     position: '',
     contactDetails: '',
     username: '',
+    imageURL: '',
+    testamonials: '',
+    role: ''
   };
   constructor(private auth: AuthService,
               public api : ApiService){
     this.getAllUser();
+    this.getAllRoles();
   }
   addToggle()
   {
@@ -55,7 +65,35 @@ export class AdminUsersComponent {
     this.addToggle();
   }
 
+  addRoleUser(roles: any, username:any){
+    // Role adding Code
+    console.log(roles)
+    console.log(username)
+    if(roles && username)
+    {
+      const rolesObj = { roles: roles };
+      this.api.dAddRole('addRole', rolesObj , username).subscribe((res : any) => {  
+        console.log(res);
+        $("#add-event-modal").modal('hide');
+        this.successmsg = true;
+        this.successMsgCnt = "Role is Added"
+        console.log("Role is added");
+        let that = this;
+        setTimeout(function() {
+          that.successmsg = false;
+          that.successMsgCnt = "";
+          console.log(that.successmsg);
+        }.bind(this), 3000);
+      }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
+    console.log();
+    }
+  }
+
   submitForm(form: any): void {
+    this.roleidval =  this.eventDetails.role;
+    this.usernamerole = this.eventDetails.username;
+    console.log('Form data:', this.eventDetails);
+    console.log( this.roleidval);
     if (form.valid) {
       console.log('Form data:', this.eventDetails);
       this.api.dPost('addUser', this.eventDetails).subscribe((res : any) => {  
@@ -64,8 +102,9 @@ export class AdminUsersComponent {
         this.getAllUser()
         form.resetForm();
         this.successmsg = true;
-        this.successMsgCnt = "New Event is Added"
+        this.successMsgCnt = "New User is Added"
         let that = this;
+        this.addRoleUser(this.roleidval, this.usernamerole)
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
@@ -81,6 +120,15 @@ export class AdminUsersComponent {
           console.log(res);
         //  this.pS = false;
          this.data = res;
+        //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
+      }, error => { console.log(error); });
+  }
+
+  getAllRoles(){
+    this.api.rDGet('getAllRole').subscribe((res : any) => {
+          console.log(res);
+        //  this.pS = false;
+         this.roleData = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
       }, error => { console.log(error); });
   }
@@ -118,7 +166,7 @@ export class AdminUsersComponent {
         $("#action-event-modal").modal('hide');
         this.getAllUser()
         this.successmsg = true;
-        this.successMsgCnt = "Event is deleted Successfully"
+        this.successMsgCnt = "User is deleted Successfully"
         let that = this;
         setTimeout(function() {
           that.successmsg = false;
@@ -143,8 +191,11 @@ export class AdminUsersComponent {
       lName: this.editData.lName.S,
       info: this.editData.info.S,
       position: this.editData.position.S,
-      contactDetails: '',
+      contactDetails: this.editData.contactDetails.S,
       username: this.editData.username.S,
+      imageURL: this.editData.imageURL.S,
+      testamonials: this.editData.testamonials.S,
+      role: ''
     });
     // $("#confrmDeleteEvent").val(dval);
   }
@@ -160,7 +211,7 @@ export class AdminUsersComponent {
         $("#action-event-modal").modal('hide');
         this.getAllUser()
         this.successmsg = true;
-        this.successMsgCnt = "Event is Updated Successfully"
+        this.successMsgCnt = "User is Updated Successfully"
         let that = this;
         setTimeout(function() {
           that.successmsg = false;
@@ -180,6 +231,9 @@ export class AdminUsersComponent {
       position: new FormControl(''),
       contactDetails: new FormControl(''),
       username: new FormControl(''),
+      imageURL: new FormControl(''),
+      testamonials: new FormControl(''),
+      role: new FormControl('')
     });
   }
 

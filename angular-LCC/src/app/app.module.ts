@@ -16,6 +16,10 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angul
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +41,10 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     FormsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [ConstantService],
   bootstrap: [AppComponent]

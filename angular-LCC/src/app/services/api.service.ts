@@ -14,7 +14,7 @@ export class ApiService {
   public urls: {[key: string]: any} = {
     getAllEvents              : "events/getAllEvents",
     addEvents                 : "events/addEvents",
-    deleteEvent               : "events",
+    deleteEvent               : "events/v2",
     updateEvent               : "events/updateEvent",
     getAllVacancy             : "vacancy/getAllVacancy",
     addVacancy                : "vacancy/addVacancy",
@@ -23,12 +23,14 @@ export class ApiService {
     getAllCaseStudies         : "caseStudies/getAllCaseStudies",
     getUniqueCaseStudy        : "caseStudies",
     addCaseStudies            : "caseStudies/addCaseStudies",
-    deleteCaseStudy           : "caseStudies",
+    deleteCaseStudy           : "caseStudies/v2",
     updateCaseStudy           : "caseStudies/updateCaseStudy",
     getAllUser                : "users/getAllUser",
     addUser                   : "users/addUser",
-    deleteUser                : "users",
+    deleteUser                : "users/v2",
     updateUser                : "users/updateUser",
+    getAllRole                : "role/getAllRole",
+    addRole                   : "users/addRole"
   }
 
   constructor( public constant : ConstantService, 
@@ -72,6 +74,38 @@ export class ApiService {
       } 
   }
 
+  rDGet(url: any) : Observable<any> {
+    try {
+      var AH = "";
+      let params = new HttpParams();
+      // if(passparams) {
+      //   Object.keys(passparams).forEach(function (key) {
+      //        params = params.append(key, passparams[key]);
+      //   });
+      //  }
+       this.authUser = localStorage.getItem("authUser") ? JSON.parse(localStorage.getItem("authUser")!) : ""; 
+      //  if(this.authUser) {
+      //    params = params.append('user_id', this.authUser.user.id);
+      //    var AH = this.authUser.token_type+" "+this.authUser.access_token;
+      //  }
+
+       let httpOptions = { 
+        headers: new HttpHeaders({
+          'Authorization':  AH
+        }),
+        params : params
+      };
+
+      return this.http.get<any>(this.apiUrl+this.urls[url], {headers: {'authorization':"Bearer "+ this.authUser,}})
+      .pipe(
+        catchError(this.handleError)
+      );
+    } catch ( e ) {
+      console.log(e);
+      return throwError(e);
+    } 
+}
+
   dGetCaseStudies(url: any, id: number) : Observable<any> {
     try {
       var AH = "";
@@ -112,7 +146,7 @@ export class ApiService {
             })
           };
         } 
-        return this.http.post<any>(this.apiUrl+this.urls[url], body, {headers: {'authorization': this.authUser,}})
+        return this.http.post<any>(this.apiUrl+this.urls[url], body, {headers: {'authorization':"Bearer "+ this.authUser,}})
       .pipe(
         catchError(this.handleError)
       );
@@ -133,7 +167,7 @@ export class ApiService {
           })
         };
       } 
-      return this.http.put<any>(this.apiUrl+this.urls[url]+"/"+id, body, httpOptions)
+      return this.http.put<any>(this.apiUrl+this.urls[url]+"/"+id, body, {headers: {'authorization':"Bearer "+ this.authUser,}})
     .pipe(
       catchError(this.handleError)
     );
@@ -141,6 +175,28 @@ export class ApiService {
       console.log(e);
       return throwError(e);
     } 
+}
+
+
+dAddRole(url: any, body: any, username: string) : Observable<any> {
+  try {
+    this.authUser = localStorage.getItem("authUser") ? JSON.parse(localStorage.getItem("authUser")!) : ""; 
+    let httpOptions = {};
+    if(this.authUser) {
+      httpOptions = { 
+        headers: new HttpHeaders({
+          'Authorization':  this.authUser.token_type+" "+this.authUser.access_token
+        })
+      };
+    } 
+    return this.http.put<any>(this.apiUrl+this.urls[url]+"/"+username, body, {headers: {'authorization':"Bearer "+ this.authUser,}})
+  .pipe(
+    catchError(this.handleError)
+  );
+  } catch ( e ) {
+    console.log(e);
+    return throwError(e);
+  } 
 }
 
   dDelete(url: any, id: number) : Observable<any> {
@@ -155,7 +211,7 @@ export class ApiService {
             })
           };
         } 
-        return this.http.delete(this.apiUrl+this.urls[url]+"/"+id, httpOptions)
+        return this.http.delete(this.apiUrl+this.urls[url]+"/"+id, {headers: {'authorization':"Bearer "+ this.authUser,}})
       .pipe(
         catchError(this.handleError)
       );
