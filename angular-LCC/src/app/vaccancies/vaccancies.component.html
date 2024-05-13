@@ -29,13 +29,14 @@
           {{vacancy.description?.S}}
          </div>
          <div class="job-detail-buttons">
-          <button class="search-buttons detail-button">Full Time</button>
-          <button class="search-buttons detail-button">Min. 1 Year</button>
-          <button class="search-buttons detail-button">Senior Level</button>
+          <button class="search-buttons detail-button">{{vacancy.jobType?.S}}</button>
+          <button class="search-buttons detail-button">{{vacancy.duration?.S}}</button>
+          <button class="search-buttons detail-button">{{vacancy.experienceLevel?.S}}</button>
          </div>
          <div class="job-card-buttons">
-          <button class="search-buttons card-buttons">Apply Now</button>
-          <!-- <button class="search-buttons card-buttons-msg">Messages</button> -->
+          <a [href]="vacancy.applyURL?.S">
+            <button class="search-buttons card-buttons">Apply Now</button>
+          </a>
          </div>
         </div>
         <!-- <div class="job-card">

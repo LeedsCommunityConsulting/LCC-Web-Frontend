@@ -37,8 +37,8 @@ export class AdminCaseStudiesComponent {
     title: '',
     client: '',
     tags: '',
-    objective: '',
-    outcome: '',
+    eobjective: '',
+    eoutcome: '',
     tagline: '',
     isPublished: '',
   };
@@ -144,8 +144,8 @@ export class AdminCaseStudiesComponent {
       title: this.editData.title.S,
       client: this.editData.client.S,
       tags: this.editData.tags.S,
-      objective: this.editData.objective.S,
-      outcome: this.editData.outcome.S,
+      eobjective: this.editData.objective.S,
+      eoutcome: this.editData.outcome.S,
       tagline: this.editData.tagline.S,
       isPublished: this.editData.isPublished.S
     });
@@ -180,8 +180,8 @@ export class AdminCaseStudiesComponent {
       title: new FormControl(''),
       tags: new FormControl(''),
       client: new FormControl(''),
-      objective: new FormControl(''),
-      outcome: new FormControl(''),
+      eobjective: new FormControl(''),
+      eoutcome: new FormControl(''),
       tagline: new FormControl(''),
       isPublished: new FormControl('')
     });

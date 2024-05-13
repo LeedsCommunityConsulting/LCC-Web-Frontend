@@ -48,10 +48,8 @@
           <thead>
             <tr>
               <th>Title</th>
-              <th>Description</th>
               <th>Availablity</th>
-              <th>Place</th>
-              <th>Vacancy Status</th>
+              <th>Job Type</th>
               <th>Publish Status</th>
             </tr>
           </thead>
@@ -61,11 +59,9 @@
                 <img src="https://img.playbook.com/IZSaaisbuPYRUSQYBZckzA61Px-1dJx2_5pGRp3N4dk/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzRkZmUwYjQ2/LWRhNjAtNDQ2Yy1h/Y2UxLWM0ZTZkMGI3/NTdlMA">
                 <p>{{datas.title?.S}}</p>
               </td>
-              <td>20th April</td>
-              <td>10am-2pm</td>
-              <td>Leeds University Union</td>
-              <td><span class="status completed">Completed</span></td>
-              <td><span class="status pending">Not Published</span></td>
+              <td>{{datas.noOfAvailablity?.S}}</td>
+              <td>{{datas.jobType?.S}}</td>
+              <td><span class="status" [ngClass]="datas.isPublished?.S == '1' ? 'completed' : 'pending'">{{datas.isPublished?.S == '1' ? "Published" : "Not Published"}}</span></td>
             </tr>
           </tbody>
         </table>
@@ -96,8 +92,8 @@
               </div>
           
               <div class="form-group">
-                <label for="availablity">Availablity</label>
-                <input type="text" class="form-control" id="availablity" name="availablity"  [(ngModel)]="eventDetails.availablity" required>
+                <label for="noOfAvailablity">Availablity</label>
+                <input type="text" class="form-control" id="noOfAvailablity" name="noOfAvailablity"  [(ngModel)]="eventDetails.noOfAvailablity" required>
               </div>
 
               <div class="form-group">
@@ -116,8 +112,16 @@
               </div>
 
               <div class="form-group">
+                <label for="applyURL">Apply URL</label>
+                <input type="text" class="form-control" id="applyURL" name="applyURL"  [(ngModel)]="eventDetails.applyURL" required>
+              </div>
+
+              <div class="form-group">
                 <label for="isPublished">Is Published</label>
-                <input type="text" class="form-control" id="isPublished" name="isPublished"  [(ngModel)]="eventDetails.isPublished" required>
+                <select class="form-control" style="height: 40px;" id="isPublished" name="isPublished" [(ngModel)]="eventDetails.isPublished" required>
+                    <option [value]="1">Yes</option>
+                    <option [value]="0">No</option>
+                  </select> 
               </div>
           
               <!-- <div class="form-group">
@@ -225,21 +229,50 @@
                             <div class="form-group">
                               <label for="title">
                                 Title:
-                                <input class="form-control" formControlName="title" placeholder="Title">
                               </label>
+                              <input class="form-control" formControlName="title" placeholder="Title">
                             </div>
                             <div class="form-group">
-                              <label for="availablity">
+                              <label for="noOfAvailablity">
                                 Availablity:
-                                <input class="form-control" formControlName="availablity" placeholder="availablity">
                               </label>
+                              <input class="form-control" formControlName="noOfAvailablity" placeholder="noOfAvailablity">
                             </div>
                             <div class="form-group">
                               <label for="description">
                                 description:
-                                <input class="form-control" formControlName="description" placeholder="description">
                               </label>
+                              <input class="form-control" formControlName="description" placeholder="description">
                             </div>
+
+                            <div class="form-group">
+                                <label for="jobType">Job Type</label>
+                                <input type="text" class="form-control" id="jobType" name="jobType"  formControlName="jobType">
+                              </div>
+                
+                              <div class="form-group">
+                                <label for="duration">Duration</label>
+                                <input type="text" class="form-control" id="duration" name="duration"  formControlName="duration">
+                              </div>
+                
+                              <div class="form-group">
+                                <label for="experienceLevel">Experience Level</label>
+                                <input type="text" class="form-control" id="experienceLevel" name="experienceLevel"  formControlName="experienceLevel">
+                              </div>
+                
+                              <div class="form-group">
+                                <label for="applyURL">Apply URL</label>
+                                <input type="text" class="form-control" id="applyURL" name="applyURL"  formControlName="applyURL">
+                              </div>
+                
+                              <div class="form-group">
+                                <label for="isPublished">Is Published</label>
+                                <select class="form-control" style="height: 40px;" id="isPublished" name="isPublished" formControlName="isPublished">
+                                    <option [value]="1">Yes</option>
+                                    <option [value]="0">No</option>
+                                  </select> 
+                              </div>
+
                             <div class="splitscreen">
                                 <div class="left">
                                     <input  type="submit"

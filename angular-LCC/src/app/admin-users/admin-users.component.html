@@ -53,7 +53,6 @@
               <th>Position</th>
               <th>Contact Details</th>
               <th>Username</th>
-              <th>Publish Status</th>
             </tr>
           </thead>
           <tbody>
@@ -62,12 +61,11 @@
                 <img src="https://img.playbook.com/IZSaaisbuPYRUSQYBZckzA61Px-1dJx2_5pGRp3N4dk/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzRkZmUwYjQ2/LWRhNjAtNDQ2Yy1h/Y2UxLWM0ZTZkMGI3/NTdlMA">
                 <p>{{datas.fName?.S}}</p>
               </td>
-              <td>Lastname</td>
-              <td>test info</td>
-              <td>CTO</td>
-              <td>10382334</td>
-              <td>TestUsername</td>
-              <td><span class="status pending">Not Active</span></td>
+              <td>{{datas.lName?.S}}</td>
+              <td>{{datas.info?.S}}</td>
+              <td>{{datas.position?.S}}</td>
+              <td>{{datas.contactDetails?.S}}</td>
+              <td>{{datas.username?.S}}</td>
             </tr>
           </tbody>
         </table>
@@ -115,6 +113,23 @@
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username"  [(ngModel)]="eventDetails.username" required>
+              </div>
+
+              <div class="form-group">
+                <label for="imageURL">Image URL</label>
+                <input type="text" class="form-control" id="imageURL" name="imageURL"  [(ngModel)]="eventDetails.imageURL" required>
+              </div>
+
+              <div class="form-group">
+                <label for="testamonials">Testamonials</label>
+                <input type="text" class="form-control" id="testamonials" name="testamonials"  [(ngModel)]="eventDetails.testamonials" required>
+              </div>
+
+              <div class="form-group">
+                <label for="role">Roles</label>
+                <select class="form-control" style="height: 40px;" id="role" name="role" [(ngModel)]="eventDetails.role" required>
+                    <option value="{{ role.id.S }}" *ngFor="let role of roleData ">{{ role.name.S }}</option>
+                  </select> 
               </div>
           
               <!-- <div class="form-group">
@@ -222,38 +237,48 @@
                             <div class="form-group">
                               <label for="fName">
                                 First Name:
-                                <input class="form-control" formControlName="fName" placeholder="firstName">
                               </label>
+                              <input class="form-control" formControlName="fName" placeholder="firstName">
                             </div>
                             <div class="form-group">
                                 <label for="lName">
                                   Last Name:
-                                  <input class="form-control" formControlName="lName" placeholder="lName">
                                 </label>
+                                <input class="form-control" formControlName="lName" placeholder="lName">
                               </div>
                             <div class="form-group">
                               <label for="info">
                                 Info:
-                                <input class="form-control" formControlName="info" placeholder="info">
                               </label>
+                              <input class="form-control" formControlName="info" placeholder="info">
                             </div>
                             <div class="form-group">
                                 <label for="position">
                                   Position:
-                                  <input class="form-control" formControlName="position" placeholder="position">
                                 </label>
+                                <input class="form-control" formControlName="position" placeholder="position">
                               </div>
                               <div class="form-group">
                                 <label for="contactDetails">
                                     Contact Details:
-                                  <input class="form-control" formControlName="contactDetails" placeholder="contactDetails">
                                 </label>
+                                <input class="form-control" formControlName="contactDetails" placeholder="contactDetails">
                               </div>
                               <div class="form-group">
                                 <label for="username">
                                     Username:
-                                  <input class="form-control" formControlName="username" placeholder="username">
                                 </label>
+                                <input class="form-control" formControlName="username" placeholder="username">
+                              </div>
+
+                              <div class="form-group">
+                                <label for="imageURL">Image URL</label>
+                                <input type="text" class="form-control" id="imageURL" name="imageURL"  formControlName="imageURL" placeholder="imageURL">
+                              </div>
+                
+                              <div class="form-group">
+                                <label for="testamonials">Testamonials</label>
+                                <input type="text" class="form-control" id="testamonials" name="testamonials"  formControlName="testamonials" placeholder="testamonials">
                               </div>
                             <div class="splitscreen">
                                 <div class="left">

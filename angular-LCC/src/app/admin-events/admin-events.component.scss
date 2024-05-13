@@ -2,6 +2,7 @@ body { padding-top:30px; }
 ul li {list-style-type:none;}
 
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 .btn-events {
     margin-top: 10px;
@@ -72,3 +73,7 @@ ul li {list-style-type:none;}
 .form-control{
   font-size: 1.4rem;
 } 
+
+.hide-data{
+  display: none !important;
+}

@@ -7,6 +7,9 @@ import { AdminEventsComponent } from './admin-events.component';
 import { AdminEventsRoutingModule } from './admin-events-routing.module';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [AdminEventsComponent],
@@ -18,7 +21,10 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     ConstantService,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
     
   ],
   exports : [
