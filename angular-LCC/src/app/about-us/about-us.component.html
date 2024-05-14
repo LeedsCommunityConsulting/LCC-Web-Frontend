@@ -13,7 +13,7 @@
                     <h3 class="d-flex align-items-center theteam">THE TEAM</h3>
                     <!-- <hr class="hr-custom"> -->
                     <p>Meet the wonderful team that keeps all the wheels turning smoothly.</p>
-                    <p>If you’d like to join our executive team, check our <a [routerLink]="['/vacancies']" href="javascript:;">vacancies page</a> or <a [routerLink]="['/contact-us']" href="javascript:;">contact us</a></p>
+                    <p>If you’d like to join our executive team, check our <a [routerLink]="['/vacancies']" [queryParams]="{ q: '', published: '1', order: 'asc' }" href="javascript:;">vacancies page</a> or <a [routerLink]="['/contact-us']" href="javascript:;">contact us</a></p>
                 </div>
             </div>
         </div>

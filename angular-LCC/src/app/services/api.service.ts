@@ -18,7 +18,7 @@ export class ApiService {
     updateEvent               : "events/updateEvent",
     getAllVacancy             : "vacancy/getAllVacancy",
     addVacancy                : "vacancy/addVacancy",
-    deleteVacancy             : "vacancy",
+    deleteVacancy             : "vacancy/v2",
     updateVacancy             : "vacancy/updateVacancy",
     getAllCaseStudies         : "caseStudies/getAllCaseStudies",
     getUniqueCaseStudy        : "caseStudies",
@@ -73,6 +73,38 @@ export class ApiService {
         return throwError(e);
       } 
   }
+
+  dNGet(url: any, passparams: any) : Observable<any> {
+    try {
+      var AH = "";
+      let params = new HttpParams();
+      if(passparams) {
+        Object.keys(passparams).forEach(function (key) {
+             params = params.append(key, passparams[key]);
+        });
+       }
+       this.authUser = localStorage.getItem("authUser") ? JSON.parse(localStorage.getItem("authUser")!) : ""; 
+      //  if(this.authUser) {
+      //    params = params.append('user_id', this.authUser.user.id);
+      //    var AH = this.authUser.token_type+" "+this.authUser.access_token;
+      //  }
+
+       let httpOptions = { 
+        headers: new HttpHeaders({
+          'Authorization':  AH
+        }),
+        params : params
+      };
+
+      return this.http.get<any>(this.apiUrl+this.urls[url], {params: params})
+      .pipe(
+        catchError(this.handleError)
+      );
+    } catch ( e ) {
+      console.log(e);
+      return throwError(e);
+    } 
+}
 
   rDGet(url: any) : Observable<any> {
     try {

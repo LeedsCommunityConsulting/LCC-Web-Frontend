@@ -568,8 +568,8 @@ body {
 }
 
 .card-buttons {
- margin-right: 12px;
- width: 260px;
+//  margin-right: 12px;
+ width: 280px;
  &-msg {
   background-color: var(--inactive-color);
   color: var(--subtitle-color);
@@ -1311,3 +1311,25 @@ div[data-pos='4'] { transform: translate(585px,155px); }
     max-width: 30rem;
     line-height: 1.5;
 }
+
+.search-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .search-input {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 8px;
+    padding-right: 30px; /* Ensure enough space for the icon */
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #666;
+    cursor: pointer;
+  }

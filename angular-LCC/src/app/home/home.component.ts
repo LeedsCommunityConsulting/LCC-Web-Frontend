@@ -51,8 +51,8 @@ export class HomeComponent {
   }
 
   slides = [
-    {src: "https://www.viasat.com/content/dam/us-site/government/images/1245270_Space_Domain_Hero_003.jpg", text: "NIGHT TIME ECONOMY SOLUTIONS", subtext: "VISIT OUR CLIENTS PAGE TO FIND OUT MORE", linktext: "Learn More"},
-    {src: "/assets/img/slide2.jpg", text: "EXPLORE OUR VACANCIES", subtext: "VISIT OUR VACANCIES PAGE TO FIND OUT MORE", linktext: "Find out More"},
+    {src: "https://www.viasat.com/content/dam/us-site/government/images/1245270_Space_Domain_Hero_003.jpg", text: "NIGHT TIME ECONOMY SOLUTIONS", subtext: "VISIT OUR CLIENTS PAGE TO FIND OUT MORE", linktext: "Learn More", linkroute: "http://www.leedscommunityconsulting.co.uk/clients?q=&published=1&order=asc"},
+    {src: "/assets/img/newImage1.jpg", text: "EXPLORE OUR VACANCIES", subtext: "VISIT OUR VACANCIES PAGE TO FIND OUT MORE", linktext: "Find out More", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
     // {src: "https://images.pexels.com/photos/9659841/pexels-photo-9659841.jpeg?auto=compress&cs=tinysrgb&w=800", text: "EXPLORE OUR VACANCIES", subtext: "We Helped Them To...", linktext: "Find out More"},
   ];
   // slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};

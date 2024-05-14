@@ -10,7 +10,17 @@
       <div class="searched-jobs">
        <div class="searched-bar">
         <div class="searched-show">Showing {{data.length}} Jobs</div>
-        <div class="searched-sort">Sort by: <span class="post-time">Newest Post </span><span class="menu-icon">▼</span></div>
+        <div class="search-container">
+          <input type="text" id="mySearch" [value]="this.params.q" (keyup)="onSearch($event)" placeholder="Search Job Title..." title="Type in a job title" class="search-input">
+          <i class="fa fa-search search-icon"></i>
+        </div>
+        <div class="searched-sort">
+          Sort by:
+          <select name="client-sort" id="client-sort" style="border-style: none;font-weight: 600;" (change)="onChange($event)">
+            <option class="post-time" value="desc">Newest Post</option> 
+            <option class="post-time" value="asc">Old Post</option> 
+          </select>
+        </div>
        </div>
        <div class="job-cards" >
         <div class="job-card" *ngFor="let vacancy of data">

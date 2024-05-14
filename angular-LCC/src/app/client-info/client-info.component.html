@@ -1,6 +1,6 @@
 <app-header ></app-header>
 
-<div class="ip-banner"  style="background-image: '/assets/img/uolabt.jpeg';" >
+<div class="ip-banner"  style="background-image: 'https://www.viasat.com/content/dam/us-site/government/images/1245270_Space_Domain_Hero_003.jpg'" >
     <!-- <div class="container" style="text-align: center;">
         <h1>ABOUT US</h1>
     </div> -->
@@ -23,14 +23,12 @@
 
                 <div class="sub-section">
                     <h2>Objectives </h2>
-                    <div [innerHTML]="data?.objective"></div>
+                    <p [innerHTML]="data?.objective"></p>
                 </div>
 
                 <div class="sub-section">
                     <h2>Outcome </h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat, nibh nec iaculis commodo, mauris dui feugiat velit, at luctus dui lectus eu lorem. Proin vitae lacinia risus. Donec varius vel enim id pulvinar. Phasellus volutpat lacus in sem laoreet mattis. In quis diam quis elit vehicula bibendum a eu risus. Quisque lorem erat, rhoncus ac neque vel, iaculis cursus neque. Sed eu congue neque. Maecenas vitae mi semper lorem convallis bibendum vitae ut sapien. Morbi dignissim luctus felis.
-                    </p>
+                    <p [innerHTML]="data?.outcome"></p>
                 </div>
             </div>
         </div>

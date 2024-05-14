@@ -16,7 +16,7 @@
                     <div class="">
                     <h2>{{slide?.text}}</h2>
                     <p>{{slide?.subtext}}</p>
-                    <a href="javascript:;" class="btn ban-btn-link">{{slide?.linktext}}</a>
+                    <a [href]="slide?.linkroute" class="btn ban-btn-link">{{slide?.linktext}}</a>
                     </div>
                 </div>
             </div>
@@ -68,13 +68,15 @@
             with.</p>
         <div class="testimonialsrow">
             <div class="testimonialscolumn" *ngFor="let testimonialas of data">
-                <div class="card" >
-                    <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
-                    <div class="container">
-                        <h4><b>{{testimonialas.title?.S}}</b></h4> 
-                        <p>Feedback</p> 
+                <a href="javascript:;" style="text-decoration: none;" [routerLink]="['/client-info/']+testimonialas.id?.S" >
+                    <div class="card" >
+                        <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
+                        <div class="container">
+                            <h3><b>{{testimonialas.title?.S}}</b></h3> 
+                            <p [innerHTML]="testimonialas.objective?.S" id="truncateLongTexts"></p> 
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <hr class="hr-custom">
@@ -82,7 +84,7 @@
         <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 25px;">WORK WITH US</h3>
         <div class="grid-container">
             <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 1">
-                <a href="javascript:;" [routerLink]="['/vacancies']">
+                <a href="javascript:;" [routerLink]="['/vacancies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
                     <div class="centered-text">BECOME A CONSULTANT</div>
                 </a>
             </div>
@@ -95,7 +97,7 @@
                 </a>
             </div>
             <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 4">
-                <a href="javascript:;" [routerLink]="['/vacancies']">
+                <a href="javascript:;" [routerLink]="['/vacancies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
                     <div class="centered-text">VACANCIES</div>
                 </a>
             </div>

@@ -72,3 +72,22 @@ ul li {list-style-type:none;}
 .form-control{
   font-size: 1.4rem;
 } 
+
+.searchText{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+#truncateLongTexts {
+  .inner-content {
+    display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 30rem;
+  line-height: 1.5;
+  }
+  
+}

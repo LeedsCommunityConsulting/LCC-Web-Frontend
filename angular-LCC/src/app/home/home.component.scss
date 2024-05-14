@@ -799,3 +799,13 @@ ul {
         margin-bottom: 2.5rem;
     }
 }
+
+#truncateLongTexts {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 30rem;
+    line-height: 1.5;
+}
