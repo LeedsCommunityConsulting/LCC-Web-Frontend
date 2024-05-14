@@ -4,6 +4,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { AuthService } from '../services/auth.service';
 import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-vaccancies',
@@ -21,20 +22,44 @@ export class VaccanciesComponent implements OnInit {
   public jobCard: any;
   public wrapper: any;
   public data : any = [];
+  public searchParamsVal : any ;
+  public params = { q: "", published : "", order : "" };
 
   
   constructor(private auth: AuthService,
-      public api : ApiService){
-  this.getAllVacancy();
+      public api : ApiService,
+      private route: ActivatedRoute,
+      private router: Router,){
+        this.params.q = this.route.snapshot.queryParamMap.get("q")!;
+        this.params.published = this.route.snapshot.queryParamMap.get("published")!;
+        this.params.order = this.route.snapshot.queryParamMap.get("order")!;
+        this.getAllVacancy();
   }
 
   getAllVacancy(){
-    this.api.dGet('getAllVacancy').subscribe((res : any) => {
+    this.api.dNGet('getAllVacancy', this.params).subscribe((res : any) => {
           console.log(res);
         //  this.pS = false;
          this.data = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
       }, error => { console.log(error); });
+  }
+
+  onSearch(event: any)
+  {
+    this.searchParamsVal = event.target.value
+    this.params.q =  this.searchParamsVal;
+    this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
+    this.getAllVacancy();
+    console.log(this.searchParamsVal );
+   // console.log($('#mySearch').value());
+  }
+
+  onChange(event: any) {
+    const selectedValue = event.target.value;
+    this.params.order =  selectedValue;
+    this.router.navigate([], { queryParams: {q: this.params.q  , published: this.params.published, order: selectedValue} } );
+    this.getAllVacancy();
   }
   
 

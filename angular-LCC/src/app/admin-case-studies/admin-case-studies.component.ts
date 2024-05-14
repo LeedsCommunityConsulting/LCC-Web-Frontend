@@ -6,6 +6,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AdminHeaderComponent } from '../admin-header/admin-header.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { ActivatedRoute, Router } from '@angular/router';
 declare var $ :any;
 @Component({
   selector: 'app-admin-case-studies',
@@ -23,6 +24,8 @@ export class AdminCaseStudiesComponent {
   public data : any = [];
   public editData : any = [];
   myForm: any = FormGroup ;
+  public searchParamsVal : any ;
+  public params = { q: "", published : "", order : "" };
   eventDetails = {
     title: '',
     client: '',
@@ -43,12 +46,24 @@ export class AdminCaseStudiesComponent {
     isPublished: '',
   };
   constructor(private auth: AuthService,
-              public api : ApiService){
+              public api : ApiService,
+              private route: ActivatedRoute,
+              private router: Router){
     this.getAllCaseStudies();
   }
   addToggle()
   {
     this.status = !this.status;       
+  }
+
+  onSearch(event: any)
+  {
+    this.searchParamsVal = event.target.value
+    this.params.q =  this.searchParamsVal;
+    this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
+    this.getAllCaseStudies();
+    console.log(this.searchParamsVal );
+   // console.log($('#mySearch').value());
   }
 
   addEvent()
@@ -79,7 +94,7 @@ export class AdminCaseStudiesComponent {
   }
 
   getAllCaseStudies(){
-    this.api.dGet('getAllCaseStudies').subscribe((res : any) => {
+    this.api.dNGet('getAllCaseStudies', this.params).subscribe((res : any) => {
           console.log(res);
         //  this.pS = false;
          this.data = res;

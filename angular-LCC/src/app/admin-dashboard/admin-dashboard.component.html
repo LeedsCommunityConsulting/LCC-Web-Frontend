@@ -26,7 +26,7 @@
     </div>
 
     <ul class="box-info">
-      <a href="javascript:;" [routerLink]="['/admin/events']">
+      <a href="javascript:;" [routerLink]="['/admin/events']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
         <li>
           <i class='bx bxs-calendar-check' ></i>
           <span class="text">
@@ -35,7 +35,7 @@
           </span>
         </li>
       </a>
-      <a href="javascript:;" [routerLink]="['/admin/vaccancy']">
+      <a href="javascript:;" [routerLink]="['/admin/vaccancy']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
         <li>
           <i class='bx bxs-doughnut-chart' ></i>
           <span class="text">
@@ -45,7 +45,7 @@
         </li>
       </a>
 
-      <a href="javascript:;" [routerLink]="['/admin/caseStudies']">
+      <a href="javascript:;" [routerLink]="['/admin/caseStudies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
         <li>
           <i class='bx bxs-message-dots' ></i>
           <span class="text">
@@ -55,7 +55,7 @@
         </li>
       </a>
       
-      <a href="javascript:;" [routerLink]="['/admin/users']">
+      <a href="javascript:;" [routerLink]="['/admin/users']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
         <li>
           <i class='bx bxs-group' ></i>
           <span class="text">

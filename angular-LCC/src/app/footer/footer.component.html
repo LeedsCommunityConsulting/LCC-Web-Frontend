@@ -7,9 +7,9 @@
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Home</a></li>
                 <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/about-us']">About Us</a></li>
-                <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/vacancies']">Vacancies</a></li>
-                <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/clients']">Clients</a></li>
-                <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/events']">Events</a></li>
+                <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/vacancies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">Vacancies</a></li>
+                <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/clients']" [queryParams]="{ q: '', published: '1', order: 'asc' }">Clients</a></li>
+                <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/events']" [queryParams]="{ q: '', published: '1', order: 'asc' }">Events</a></li>
                 <li class="list-inline-item"><a href="javascript:;" [routerLink]="['/faqs']">FAQs</a></li>
             </ul>
             <p class="copyright">Leeds Community Consulting © 2023</p>

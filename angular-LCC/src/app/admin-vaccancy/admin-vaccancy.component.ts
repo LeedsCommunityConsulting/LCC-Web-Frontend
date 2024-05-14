@@ -5,6 +5,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AdminHeaderComponent } from '../admin-header/admin-header.component';
 import { AuthService } from '../services/auth.service';
 import { ApiService } from '../services/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 declare var $ :any;
 @Component({
   selector: 'app-admin-vaccancy',
@@ -15,6 +16,9 @@ declare var $ :any;
 })
 export class AdminVaccancyComponent {
   status = true;
+  public searchParamsVal : any ;
+  public params = { q: "", published : "", order : "" };
+  public checkP : any = "Test";
   public successmsg = false;
   public warningmsg = false;
   public errormsg = false;
@@ -44,8 +48,22 @@ export class AdminVaccancyComponent {
     applyURL: ''
   };
   constructor(private auth: AuthService,
-              public api : ApiService){
+              public api : ApiService,
+              private route: ActivatedRoute,
+              private router: Router,){
+    this.params.q = this.route.snapshot.queryParamMap.get("q")!;
+    this.params.published = this.route.snapshot.queryParamMap.get("published")!;
+    this.params.order = this.route.snapshot.queryParamMap.get("order")!;
     this.getAllVacancy();
+  }
+  onSearch(event: any)
+  {
+    this.searchParamsVal = event.target.value
+    this.params.q =  this.searchParamsVal;
+    this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
+    this.getAllVacancy();
+    console.log(this.searchParamsVal );
+   // console.log($('#mySearch').value());
   }
   addToggle()
   {
@@ -80,7 +98,7 @@ export class AdminVaccancyComponent {
   }
 
   getAllVacancy(){
-    this.api.dGet('getAllVacancy').subscribe((res : any) => {
+    this.api.dNGet('getAllVacancy', this.params).subscribe((res : any) => {
           console.log(res);
         //  this.pS = false;
          this.data = res;

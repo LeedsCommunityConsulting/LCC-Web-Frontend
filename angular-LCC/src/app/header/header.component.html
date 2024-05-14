@@ -18,19 +18,23 @@
                         </li>
                         <li class="drop-down nav-item dropdown" >
                             <a class="nav-link " href="javascript:;" 
-                            [routerLink]="['/vacancies']">Vacancies</a>
+                            [routerLink]="['/vacancies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">Vacancies</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
                             <a class="nav-link " href="javascript:;" 
-                            [routerLink]="['/clients']" >Clients</a>
+                            [routerLink]="['/clients']"  [queryParams]="{ q: '', published: '1', order: 'asc' }">Clients</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
                             <a class="nav-link " href="javascript:;" 
-                                [routerLink]="['/events']" >Events</a>
+                                [routerLink]="['/events']" [queryParams]="{ q: '', published: '1', order: 'asc' }">Events</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
                             <a class="nav-link " href="javascript:;" 
                             [routerLink]="['/faqs']" >FAQ</a>
+                        </li>
+                        <li class="drop-down nav-item dropdown" >
+                            <a class="nav-link " href="javascript:;" 
+                            [routerLink]="['/contact-us']" >Contact Us</a>
                         </li>
                         <li class="drop-down nav-item dropdown" >
                             <a class="nav-link" [routerLink]="['/admin/login']"

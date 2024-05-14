@@ -8,6 +8,7 @@ import { ApiService } from '../services/api.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { ActivatedRoute, Router } from '@angular/router';
 declare var $ :any;
 @Component({
   selector: 'app-admin-events',
@@ -25,6 +26,8 @@ export class AdminEventsComponent {
   // @ViewChild('eventEditDetails') form!: NgForm;
   status = true;
   isDeleted: string;
+  public searchParamsVal : any ;
+  public params = { q: "", published : "", order : "" };
   public successmsg = false;
   public warningmsg = false;
   public errormsg = false;
@@ -50,7 +53,8 @@ export class AdminEventsComponent {
     imageURL: '',
     isPublished: '',
     typeOfEvent: '',
-    fee: ''
+    fee: '',
+    applyURL: ''
   };
 
   eventEditDetails: any = {
@@ -64,15 +68,31 @@ export class AdminEventsComponent {
     imageURL: '',
     isPublished: '',
     typeOfEvent: '',
+    applyURL: ''
   };
   constructor(private auth: AuthService,
-              public api : ApiService){
-    this.getAllEvents();
-    this.isDeleted = '';
+              public api : ApiService,
+              private route: ActivatedRoute,
+              private router: Router){
+      this.params.q = this.route.snapshot.queryParamMap.get("q")!;
+      this.params.published = this.route.snapshot.queryParamMap.get("published")!;
+      this.params.order = this.route.snapshot.queryParamMap.get("order")!;
+      this.getAllEvents();
+      this.isDeleted = '';
   }
   addToggle()
   {
     this.status = !this.status;       
+  }
+
+  onSearch(event: any)
+  {
+    this.searchParamsVal = event.target.value
+    this.params.q =  this.searchParamsVal;
+    this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
+    this.getAllEvents();
+    console.log(this.searchParamsVal );
+   // console.log($('#mySearch').value());
   }
 
   addEvent()
@@ -117,7 +137,7 @@ export class AdminEventsComponent {
   }
 
   getAllEvents(){
-    this.api.dGet('getAllEvents').subscribe((res : any) => {
+    this.api.dNGet('getAllEvents', this.params).subscribe((res : any) => {
           console.log(res);
         //  this.pS = false;
          this.data = res;
@@ -207,7 +227,8 @@ export class AdminEventsComponent {
       imageURL: this.editData.imageURL.S,
       isPublished: this.editData.isPublished.S,
       typeOfEvent: this.editData.typeOfEvent.S,
-      fee: this.editData.fee.S
+      fee: this.editData.fee.S,
+      // applyURL: this.editData.applyURL.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }
@@ -260,7 +281,8 @@ export class AdminEventsComponent {
       imageURL: new FormControl(''),
       isPublished: new FormControl(''),
       typeOfEvent: new FormControl(''),
-      fee: new FormControl('')
+      fee: new FormControl(''),
+      applyURL: new FormControl('')
     });
   }
 
