@@ -70,7 +70,7 @@
             <div class="testimonialscolumn" *ngFor="let testimonialas of data">
                 <a href="javascript:;" style="text-decoration: none;" [routerLink]="['/client-info/']+testimonialas.id?.S" >
                     <div class="card" >
-                        <img src="/assets/img/slide1.jpg" alt="" style="width:100%">
+                        <img [src]="testimonialas.imageURL?.S" alt="" style="width:100%">
                         <div class="container">
                             <h3><b>{{testimonialas.title?.S}}</b></h3> 
                             <p [innerHTML]="testimonialas.objective?.S" id="truncateLongTexts"></p> 

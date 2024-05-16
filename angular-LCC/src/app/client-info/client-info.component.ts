@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit, Renderer2} from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,8 @@ export class ClientInfoComponent {
 
   constructor(private auth: AuthService,
     private route: ActivatedRoute,
-    public api : ApiService){
+    public api : ApiService,
+    private renderer: Renderer2){
     this.getCasestudy();
     this.id = this.route.snapshot.paramMap.get("id");
     // console.log(this.id)
@@ -45,6 +46,8 @@ getCasestudy(){
 
 
 ngOnInit(): void {
+  console.log('Component initialized');
+  this.renderer.setProperty(document.documentElement, 'scrollTop', 0);
 }
 
 }

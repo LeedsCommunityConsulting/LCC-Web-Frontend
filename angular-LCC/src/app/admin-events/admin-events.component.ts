@@ -228,7 +228,7 @@ export class AdminEventsComponent {
       isPublished: this.editData.isPublished.S,
       typeOfEvent: this.editData.typeOfEvent.S,
       fee: this.editData.fee.S,
-      // applyURL: this.editData.applyURL.S
+      applyURL: this.editData.applyURL.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }

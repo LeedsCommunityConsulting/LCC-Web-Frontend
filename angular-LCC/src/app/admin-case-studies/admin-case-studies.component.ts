@@ -34,6 +34,7 @@ export class AdminCaseStudiesComponent {
     outcome: '',
     tagline: '',
     isPublished: '',
+    imageURL: ''
   };
 
   eventEditDetails: any = {
@@ -44,6 +45,7 @@ export class AdminCaseStudiesComponent {
     eoutcome: '',
     tagline: '',
     isPublished: '',
+    imageURL: ''
   };
   constructor(private auth: AuthService,
               public api : ApiService,
@@ -162,7 +164,8 @@ export class AdminCaseStudiesComponent {
       eobjective: this.editData.objective.S,
       eoutcome: this.editData.outcome.S,
       tagline: this.editData.tagline.S,
-      isPublished: this.editData.isPublished.S
+      isPublished: this.editData.isPublished.S,
+      imageURL: this.editData.imageURL.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }
@@ -198,7 +201,8 @@ export class AdminCaseStudiesComponent {
       eobjective: new FormControl(''),
       eoutcome: new FormControl(''),
       tagline: new FormControl(''),
-      isPublished: new FormControl('')
+      isPublished: new FormControl(''),
+      imageURL: new FormControl('')
     });
   }
 
