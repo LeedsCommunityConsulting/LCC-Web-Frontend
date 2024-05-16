@@ -11,25 +11,25 @@
         </a>
       </li>
       <li [ngClass]="{'active': currentRouteName=='events'}">
-        <a href="javascript:;" [routerLink]="['/admin/events']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
+        <a href="javascript:;" [routerLink]="['/admin/events']" [queryParams]="{ q: '', published: '', order: 'asc' }">
           <i class='bx bxs-calendar-check' ></i>
           <span class="text">Events</span>
         </a>
       </li>
       <li [ngClass]="{'active': currentRouteName=='vaccancy'}">
-        <a href="javascript:;" [routerLink]="['/admin/vaccancy']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
+        <a href="javascript:;" [routerLink]="['/admin/vaccancy']" [queryParams]="{ q: '', published: '', order: 'asc' }">
           <i class='bx bxs-doughnut-chart' ></i>
           <span class="text">Vacancy</span>
         </a>
       </li>
       <li [ngClass]="{'active': currentRouteName=='caseStudies'}">
-        <a href="javascript:;" [routerLink]="['/admin/caseStudies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
+        <a href="javascript:;" [routerLink]="['/admin/caseStudies']" [queryParams]="{ q: '', published: '', order: 'asc' }">
           <i class='bx bxs-message-dots' ></i>
           <span class="text">Case Studies</span>
         </a>
       </li>
       <li [ngClass]="{'active': currentRouteName=='users'}">
-        <a href="javascript:;" [routerLink]="['/admin/users']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
+        <a href="javascript:;" [routerLink]="['/admin/users']" [queryParams]="{ q: '', published: '', order: 'asc' }">
           <i class='bx bxs-group' ></i>
           <span class="text">Users</span>
         </a>

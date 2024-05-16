@@ -1,6 +1,10 @@
 <app-header ></app-header>
+<div class="success-msg" >
+    <i class="fa fa-check"></i>
+   success
+</div>
 <div class="container">
-    <form>
+    <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)">
         <div class="form">
             <div class="form-txt">
                 <h1>Contact Us</h1>
@@ -11,13 +15,38 @@
                 <p>University of Leeds, Woodhouse, Leeds, LS2 9JT, UK<br>leedscommunityconsulting&#64;gmail.com</p>
             </div>
             <div class="form-details">
-                <input type="text" name="name" id="name" placeholder="Name" required>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-                <textarea name="message" id="message" cols="52" rows="7" placeholder="Message" required></textarea>
+                <input type="text" name="name" id="name" placeholder="Name" [(ngModel)]="contactDetails.name" required>
+                <input type="email" name="email" id="email" placeholder="Email" [(ngModel)]="contactDetails.email" required>
+                <input type="text" class="subject" name="subject" id="subject" placeholder="subject" [(ngModel)]="contactDetails.subject" required>
+                <textarea name="message" id="message" cols="52" rows="7" placeholder="Message" [(ngModel)]="contactDetails.message" required></textarea>
                 <button>SEND MESSAGE</button>
             </div>
         </div>
     </form>
+
+    <div id="success_tic" class="modal fade" role="dialog">
+        <div class="modal-dialog" style="top: 25%;">
+            <div class="modal-content" style="border-radius: 25px;">
+                <a class="close" href="#" data-dismiss="modal" (click)="closeModal()">&times;</a>
+                <div class="page-body">
+                    <div class="head">  
+                        <h3 style="margin-top:5px;">Message Sent Successfully</h3>
+                        <h4>our team will contact you soon!</h4>
+                    </div>
+        
+                    <h1 style="text-align:center;margin-top: 20px;">
+                        <div class="checkmark-circle">
+                            <div class="background"></div>
+                            <div class="checkmark draw"></div>
+                        </div>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+
+
 </div>
 
 <app-footer></app-footer>

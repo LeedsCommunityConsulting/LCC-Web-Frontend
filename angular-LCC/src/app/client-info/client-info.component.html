@@ -1,6 +1,6 @@
 <app-header ></app-header>
 
-<div class="ip-banner"  style="background-image: 'https://www.viasat.com/content/dam/us-site/government/images/1245270_Space_Domain_Hero_003.jpg'" >
+<div class="ip-banner"  [style.background-image]="'url(' + data?.imageURL + ')'" style="top: 10px;" >
     <!-- <div class="container" style="text-align: center;">
         <h1>ABOUT US</h1>
     </div> -->

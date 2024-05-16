@@ -5,6 +5,7 @@ import { ApiService } from '../services/api.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { AdminHeaderComponent } from '../admin-header/admin-header.component';
+import { ActivatedRoute, Router } from '@angular/router';
 declare var $ :any;
 @Component({
   selector: 'app-admin-users',
@@ -16,6 +17,8 @@ declare var $ :any;
 export class AdminUsersComponent {
 
   status = true;
+  public searchParamsVal : any ;
+  public params = { q: "", published : "", order : "" };
   public roleidval : any;
   public usernamerole : any;
   public successmsg = false;
@@ -50,9 +53,24 @@ export class AdminUsersComponent {
     role: ''
   };
   constructor(private auth: AuthService,
-              public api : ApiService){
+              public api : ApiService,
+              private route: ActivatedRoute,
+              private router: Router){
+  this.params.q = this.route.snapshot.queryParamMap.get("q")!;
+  this.params.published = this.route.snapshot.queryParamMap.get("published")!;
+  this.params.order = this.route.snapshot.queryParamMap.get("order")!;
     this.getAllUser();
     this.getAllRoles();
+  }
+
+  onSearch(event: any)
+  {
+    this.searchParamsVal = event.target.value
+    this.params.q =  this.searchParamsVal;
+    this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
+    this.getAllUser();
+    console.log(this.searchParamsVal );
+   // console.log($('#mySearch').value());
   }
   addToggle()
   {
@@ -104,7 +122,7 @@ export class AdminUsersComponent {
         this.successmsg = true;
         this.successMsgCnt = "New User is Added"
         let that = this;
-        this.addRoleUser(this.roleidval, this.usernamerole)
+        // this.addRoleUser(this.roleidval, this.usernamerole)
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
@@ -116,7 +134,7 @@ export class AdminUsersComponent {
   }
 
   getAllUser(){
-    this.api.dGet('getAllUser').subscribe((res : any) => {
+    this.api.dNGet('getAllUser', this.params).subscribe((res : any) => {
           console.log(res);
         //  this.pS = false;
          this.data = res;
@@ -131,6 +149,31 @@ export class AdminUsersComponent {
          this.roleData = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
       }, error => { console.log(error); });
+  }
+
+
+  removeRole(roles: any, username:any){
+    console.log(roles)
+    console.log(username)
+    if(roles && username)
+    {
+      const rolesObj = { roles: roles };
+      this.api.dRemoveRole('removeRole', rolesObj , username).subscribe((res : any) => {  
+        console.log(res);
+        $("#add-event-modal").modal('hide');
+        this.successmsg = true;
+        this.successMsgCnt = "Existing Role is removed"
+        console.log("Existing Role is removed");
+        let that = this;
+        setTimeout(function() {
+          that.successmsg = false;
+          that.successMsgCnt = "";
+          console.log(that.successmsg);
+        }.bind(this), 3000);
+      }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
+    console.log();
+    }
+
   }
 
   closeModal(){
@@ -191,16 +234,18 @@ export class AdminUsersComponent {
       lName: this.editData.lName.S,
       info: this.editData.info.S,
       position: this.editData.position.S,
-      contactDetails: this.editData.contactDetails.S,
+      contactDetails: "",
       username: this.editData.username.S,
       imageURL: this.editData.imageURL.S,
       testamonials: this.editData.testamonials.S,
-      role: ''
+      role: this.editData.testamonials.S
     });
     // $("#confrmDeleteEvent").val(dval);
   }
 
   updateEventsForm(form: any): void {
+    this.roleidval =  this.eventDetails.role;
+    this.usernamerole = this.eventDetails.username;
     var cnfrmUpdstaeEveId = $("#editEventsId").val();
     console.log(this.myForm.value);
     if (form.valid) {
@@ -213,6 +258,8 @@ export class AdminUsersComponent {
         this.successmsg = true;
         this.successMsgCnt = "User is Updated Successfully"
         let that = this;
+        this.removeRole(this.roleidval, this.usernamerole)
+        this.addRoleUser(this.roleidval, this.usernamerole)
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";

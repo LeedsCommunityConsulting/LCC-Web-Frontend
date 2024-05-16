@@ -30,7 +30,11 @@ export class ApiService {
     deleteUser                : "users/v2",
     updateUser                : "users/updateUser",
     getAllRole                : "role/getAllRole",
-    addRole                   : "users/addRole"
+    addRole                   : "users/addRole",
+    getUserByRole             : "users/getUserByRole/4001",
+    removeRole                : "users/removeRole",
+    contactUs                 : "contact/contact-form"
+
   }
 
   constructor( public constant : ConstantService, 
@@ -211,6 +215,27 @@ export class ApiService {
 
 
 dAddRole(url: any, body: any, username: string) : Observable<any> {
+  try {
+    this.authUser = localStorage.getItem("authUser") ? JSON.parse(localStorage.getItem("authUser")!) : ""; 
+    let httpOptions = {};
+    if(this.authUser) {
+      httpOptions = { 
+        headers: new HttpHeaders({
+          'Authorization':  this.authUser.token_type+" "+this.authUser.access_token
+        })
+      };
+    } 
+    return this.http.put<any>(this.apiUrl+this.urls[url]+"/"+username, body, {headers: {'authorization':"Bearer "+ this.authUser,}})
+  .pipe(
+    catchError(this.handleError)
+  );
+  } catch ( e ) {
+    console.log(e);
+    return throwError(e);
+  } 
+}
+
+dRemoveRole(url: any, body: any, username: string) : Observable<any> {
   try {
     this.authUser = localStorage.getItem("authUser") ? JSON.parse(localStorage.getItem("authUser")!) : ""; 
     let httpOptions = {};

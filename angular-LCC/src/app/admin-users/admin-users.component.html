@@ -42,6 +42,7 @@
         <div class="head">
           <h3>User Records</h3>
           <i class='bx bx-search' ></i>
+          <input type="text" class="searchText" id="mySearch" [value]="this.params.q" (keyup)="onSearch($event)" placeholder="Search.." title="Type in a category">
           <i class='bx bx-filter' ></i>
         </div>
         <table>
@@ -86,47 +87,47 @@
             <h2 class="heading" style="text-align: center;color: #5c821a;font-weight: 400;">Create New User</h2>
             <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)" >
               <div class="form-group">
-                <label for="fName">First Name</label>
+                <label for="fName">First Name*</label>
                 <input type="text" class="form-control" id="fName" name="fName" [(ngModel)]="eventDetails.fName" required>
               </div>
               
               <div class="form-group">
-                <label for="lName">Last Name</label>
+                <label for="lName">Last Name*</label>
                 <input type="text" class="form-control" id="lName" name="lName" [(ngModel)]="eventDetails.lName" required>
               </div>
           
               <div class="form-group">
-                <label for="info">Info</label>
+                <label for="info">Info*</label>
                 <input type="text" class="form-control" id="info" name="info"  [(ngModel)]="eventDetails.info" required>
               </div>
 
               <div class="form-group">
-                <label for="position">Position</label>
+                <label for="position">Position*</label>
                 <input type="text" class="form-control" id="position" name="position"  [(ngModel)]="eventDetails.position" required>
               </div>
 
               <div class="form-group">
-                <label for="contactDetails">Contact Details</label>
+                <label for="contactDetails">Contact Details*</label>
                 <input type="text" class="form-control" id="contactDetails" name="contactDetails"  [(ngModel)]="eventDetails.contactDetails" required>
               </div>
 
               <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Username*</label>
                 <input type="text" class="form-control" id="username" name="username"  [(ngModel)]="eventDetails.username" required>
               </div>
 
               <div class="form-group">
-                <label for="imageURL">Image URL</label>
+                <label for="imageURL">Image URL*</label>
                 <input type="text" class="form-control" id="imageURL" name="imageURL"  [(ngModel)]="eventDetails.imageURL" required>
               </div>
 
               <div class="form-group">
-                <label for="testamonials">Testamonials</label>
+                <label for="testamonials">Testamonials*</label>
                 <input type="text" class="form-control" id="testamonials" name="testamonials"  [(ngModel)]="eventDetails.testamonials" required>
               </div>
 
               <div class="form-group">
-                <label for="role">Roles</label>
+                <label for="role">Roles*</label>
                 <select class="form-control" style="height: 40px;" id="role" name="role" [(ngModel)]="eventDetails.role" required>
                     <option value="{{ role.id.S }}" *ngFor="let role of roleData ">{{ role.name.S }}</option>
                   </select> 
@@ -231,7 +232,7 @@
                       
             
                       <div class="container">
-                        <h2 class="heading">Edit User</h2>
+                        <h2 class="heading" style="text-align: center;color: #5c821a;font-weight: 400;">Edit User</h2>
                         <input type="hidden" value="" id="editEventsId">
                         <form [formGroup]="myForm" (ngSubmit)="updateEventsForm(myForm)">
                             <div class="form-group">
@@ -279,6 +280,12 @@
                               <div class="form-group">
                                 <label for="testamonials">Testamonials</label>
                                 <input type="text" class="form-control" id="testamonials" name="testamonials"  formControlName="testamonials" placeholder="testamonials">
+                              </div>
+                              <div class="form-group">
+                                <label for="role">Roles*</label>
+                                <select class="form-control" style="height: 40px;" id="role" name="role" formControlName="role" required>
+                                    <option value="{{ role.id.S }}" *ngFor="let role of roleData ">{{ role.name.S }}</option>
+                                  </select> 
                               </div>
                             <div class="splitscreen">
                                 <div class="left">
