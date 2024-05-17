@@ -40,7 +40,7 @@ export class HomeComponent {
             
            const result = res.slice(0, 3);
            this.data = result;
-           console.log(this.data);
+          //  console.log(this.data);
         }, error => { console.log(error); });
     }
 

@@ -18,19 +18,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-lg-6 col-xl-4" >
-                <div class="meetTeam">
+            <div class="col-12 col-lg-6 col-xl-4" *ngFor="let team of teams">
+                <div class="meetTeam" >
                     <figure>
-                        <img class="insta" height="529" src="https://media.licdn.com/dms/image/D4E03AQHlJQZ_tjZhiA/profile-displayphoto-shrink_400_400/0/1699447252000?e=1720656000&v=beta&t=PuqHgHcKcQnKfa2kCKdnEx9rZeXX6Dz8yeVLSjY-46A">
+                        <img class="insta" height="529" [src]="team?.imageURL?.S">
                     </figure>
                     <figcaption>
                         <div class="top">
                             <div>
-                                <h3>Frederica Rodrigues</h3>
-                                <p>Managing Partner</p>
+                                <h3>{{team?.fName?.S}} {{team?.lName?.S}}</h3>
+                                <p>{{team?.position?.S}}</p>
                             </div>
                             <div class="socialIcons">
-                            <a class="linkedIcon"  href="https://www.linkedin.com/in/fredericarodrigues/?originalSubdomain=uk"  target="_blank"></a>
+                            <a class="linkedIcon"  [href]="team?.contactDetails?.M?.M?.M?.linkedIn?.S"   target="_blank"></a>
                             <!-- <a class="instaIcon" href="" target="_blank"></a> -->
                             </div>
                         </div>
@@ -41,48 +41,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-lg-6 col-xl-4" >
-                <div class="meetTeam">
-                    <figure>
-                        <img class="insta" height="529" src="https://media.licdn.com/dms/image/D4E03AQGLyreMBvuZkw/profile-displayphoto-shrink_400_400/0/1667569704138?e=1720656000&v=beta&t=41ZM-sxx2QtFwFcqIPnmVL2zNyiWQjN4BcLQoiO2iSw">
-                    </figure>
-                    <figcaption>
-                        <div class="top">
-                            <div>
-                                <h3>Eliza Fox</h3>
-                                <p>Operations Partner</p>
-                            </div>
-                            <div class="socialIcons">
-                            <a class="linkedIcon"  href="https://www.linkedin.com/in/eliza-fox/"  target="_blank"></a>
-                            <!-- <a class="instaIcon" href="" target="_blank"></a> -->
-                            </div>
-                        </div>
-                    </figcaption>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 col-xl-4" >
-                <div class="meetTeam">
-                    <figure>
-                        <img class="insta" height="529" src="https://media.licdn.com/dms/image/D4E03AQFNvDFfyX3IFw/profile-displayphoto-shrink_400_400/0/1696171844700?e=1720656000&v=beta&t=V5DXKWHbyBqMgA8PoxDlt7rgz1Y0p0ApbLQbrUWVKCU">
-                    </figure>
-                    <figcaption>
-                        <div class="top">
-                            <div>
-                                <h3>Diogo Ferreira</h3>
-                                <p>Technology Partner</p>
-                            </div>
-                            <div class="socialIcons">
-                            <a class="linkedIcon"  href="https://www.linkedin.com/in/diogo-ferreira-025458210/?originalSubdomain=uk"  target="_blank"></a>
-                            <!-- <a class="instaIcon" href="" target="_blank"></a> -->
-                            </div>
-                        </div>
-                        <!-- <div class="bottom">
-                            <p>Gal Gadot is so stunning that even mirrors take a moment to admire her. If Wonder Woman needed a sidekick, it would be her infectious smile saving the day.</p>
-                        </div> -->
-                    </figcaption>
-                </div>
-            </div>
+           
             
         </div>
     </div>

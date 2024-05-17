@@ -43,14 +43,14 @@ export class ResetPasswordComponent {
               });
 
               auth.isLoggedIn().subscribe(data => {
-                console.log(data);
+                // console.log(data);
                this.authUser = this.constant.getAuth();
               });
 
               this.id = this.route.snapshot.paramMap.get("id");
               this.slug = this.route.snapshot.paramMap.get("slug");
-              console.log(this.slug)
-              console.log(this.id)
+              // console.log(this.slug)
+              // console.log(this.id)
   }
 
 
@@ -73,18 +73,18 @@ export class ResetPasswordComponent {
     });
     let loginDataString = JSON.stringify(formDataJson);
     this.auth.resetPass(this.id, this.slug, loginDataString).then( (response : any) => {
-    	console.log(response.token);
+    	// console.log(response.token);
       this.lS = false;
     	this.loginsuccess = "Login Succcess";
       this.has_error = false;
     	this.auth.storeauthdata(response.token);
-      console.log(this.constant.getAuth())
+      // console.log(this.constant.getAuth())
     	let that = this;
     	setTimeout(function(){
     		that.goToDashboard();
     	}, 1000);
     }).catch( (error : any) => {
-        console.log(error);
+        // console.log(error);
         this.loginerror = error.error.message;
         this.auth.clearauthdata();
         this.lS = false;

@@ -42,7 +42,7 @@ export class AdminLoginComponent {
               });
 
               auth.isLoggedIn().subscribe(data => {
-                console.log(data);
+                // console.log(data);
                this.authUser = this.constant.getAuth();
               });
 
@@ -71,12 +71,12 @@ export class AdminLoginComponent {
     });
     let loginDataString = JSON.stringify(formDataJson);
     this.auth.login(loginDataString).then( (response : any) => {
-    	console.log(response.token);
+    	// console.log(response.token);
       this.lS = false;
     	this.loginsuccess = "Login Succcess";
       this.has_error = false;
     	this.auth.storeauthdata(response.token);
-      console.log(response.token)
+      // console.log(response.token)
     	let that = this;
     	setTimeout(function(){
     		that.goToDashboard();

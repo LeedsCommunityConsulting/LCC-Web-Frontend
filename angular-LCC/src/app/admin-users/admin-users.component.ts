@@ -34,10 +34,14 @@ export class AdminUsersComponent {
     lName: '',
     info: '',
     position: '',
-    contactDetails: '',
+    contactDetails: {
+      email: '',
+      linkedIn: ''     
+    },
     username: '',
     imageURL: '',
     testamonials: '',
+    memberType: '',
     role: ''
   };
 
@@ -46,10 +50,16 @@ export class AdminUsersComponent {
     lName: '',
     info: '',
     position: '',
-    contactDetails: '',
+    contactDetails: {
+      email: '', 
+      linkedIn: ''    
+    },
+    email: '',
+    linkedIn: '',
     username: '',
     imageURL: '',
     testamonials: '',
+    memberType: '',
     role: ''
   };
   constructor(private auth: AuthService,
@@ -69,7 +79,7 @@ export class AdminUsersComponent {
     this.params.q =  this.searchParamsVal;
     this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
     this.getAllUser();
-    console.log(this.searchParamsVal );
+    // console.log(this.searchParamsVal );
    // console.log($('#mySearch').value());
   }
   addToggle()
@@ -85,22 +95,22 @@ export class AdminUsersComponent {
 
   addRoleUser(roles: any, username:any){
     // Role adding Code
-    console.log(roles)
-    console.log(username)
+    // console.log(roles)
+    // console.log(username)
     if(roles && username)
     {
       const rolesObj = { roles: roles };
       this.api.dAddRole('addRole', rolesObj , username).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#add-event-modal").modal('hide');
         this.successmsg = true;
         this.successMsgCnt = "Role is Added"
-        console.log("Role is added");
+        // console.log("Role is added");
         let that = this;
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
     console.log();
@@ -110,12 +120,16 @@ export class AdminUsersComponent {
   submitForm(form: any): void {
     this.roleidval =  this.eventDetails.role;
     this.usernamerole = this.eventDetails.username;
-    console.log('Form data:', this.eventDetails);
-    console.log( this.roleidval);
+    const email: string = this.eventDetails.contactDetails.email;
+    const linkedIn: string = this.eventDetails.contactDetails.linkedIn;
+    const contactDetailsObj = { email:  email, linkedIn: linkedIn};
+    this.eventDetails.contactDetails = contactDetailsObj;
+    // console.log('Form data:', this.eventDetails);
+    // console.log( this.roleidval);
     if (form.valid) {
-      console.log('Form data:', this.eventDetails);
+      // console.log('Form data:', this.eventDetails);
       this.api.dPost('addUser', this.eventDetails).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#add-event-modal").modal('hide');
         this.getAllUser()
         form.resetForm();
@@ -126,16 +140,16 @@ export class AdminUsersComponent {
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
-    console.log();
+    // console.log();
     }
   }
 
   getAllUser(){
     this.api.dNGet('getAllUser', this.params).subscribe((res : any) => {
-          console.log(res);
+          // console.log(res);
         //  this.pS = false;
          this.data = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -144,7 +158,7 @@ export class AdminUsersComponent {
 
   getAllRoles(){
     this.api.rDGet('getAllRole').subscribe((res : any) => {
-          console.log(res);
+          // console.log(res);
         //  this.pS = false;
          this.roleData = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -153,25 +167,25 @@ export class AdminUsersComponent {
 
 
   removeRole(roles: any, username:any){
-    console.log(roles)
-    console.log(username)
+    // console.log(roles)
+    // console.log(username)
     if(roles && username)
     {
       const rolesObj = { roles: roles };
       this.api.dRemoveRole('removeRole', rolesObj , username).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#add-event-modal").modal('hide');
         this.successmsg = true;
         this.successMsgCnt = "Existing Role is removed"
-        console.log("Existing Role is removed");
+        // console.log("Existing Role is removed");
         let that = this;
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
-    console.log();
+    // console.log();
     }
 
   }
@@ -183,7 +197,7 @@ export class AdminUsersComponent {
   }
 
   selectRow(id: any){
-    console.log(id);
+    // console.log(id);
     $("#action-event-modal").modal('show');
     $("#editOrDeleteEvent").val(id);
 
@@ -201,10 +215,10 @@ export class AdminUsersComponent {
 
   deletEvent(){
     var cnfrmDelEveId = $("#confrmDeleteEvent").val();
-    console.log(cnfrmDelEveId);
+    // console.log(cnfrmDelEveId);
     this.api.dDelete('deleteUser', cnfrmDelEveId).subscribe(
       () => {
-        console.log('Item deleted successfully');
+        // console.log('Item deleted successfully');
         $("#delete-event-modal").modal('hide')
         $("#action-event-modal").modal('hide');
         this.getAllUser()
@@ -214,7 +228,7 @@ export class AdminUsersComponent {
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       },
       error => {
@@ -234,24 +248,33 @@ export class AdminUsersComponent {
       lName: this.editData.lName.S,
       info: this.editData.info.S,
       position: this.editData.position.S,
-      contactDetails: "",
+      contactDetails: {
+        email: this.editData.contactDetails.M.M.M.email.S, 
+        linkedIn: this.editData.contactDetails.M.M.M.linkedIn.S
+      },
+      email: this.editData.contactDetails.M.M.M.email.S,
+      linkedIn: this.editData.contactDetails.M.M.M.linkedIn.S,
       username: this.editData.username.S,
       imageURL: this.editData.imageURL.S,
       testamonials: this.editData.testamonials.S,
-      role: this.editData.testamonials.S
+      memberType: this.editData.memberType ? this.editData.memberType.S : '',
+      role: ''
     });
-    // $("#confrmDeleteEvent").val(dval);
   }
 
   updateEventsForm(form: any): void {
     this.roleidval =  this.eventDetails.role;
     this.usernamerole = this.eventDetails.username;
+    const email: string = this.eventDetails.contactDetails.email;
+    const linkedIn: string = this.eventDetails.contactDetails.linkedIn;
+    const contactDetailsObj = { email:  email, linkedIn: linkedIn};
+    this.myForm.contactDetails = contactDetailsObj;
     var cnfrmUpdstaeEveId = $("#editEventsId").val();
-    console.log(this.myForm.value);
+    // console.log(this.myForm.value);
     if (form.valid) {
-      console.log('Form data:', this.myForm.value);
+      // console.log('Form data:', this.myForm.value);
       this.api.dUpdate('updateUser', this.myForm.value, cnfrmUpdstaeEveId).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#edit-event-modal").modal('hide');
         $("#action-event-modal").modal('hide');
         this.getAllUser()
@@ -263,7 +286,7 @@ export class AdminUsersComponent {
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
     console.log();
@@ -276,10 +299,16 @@ export class AdminUsersComponent {
       info: new FormControl(''),
       lName: new FormControl(''),
       position: new FormControl(''),
-      contactDetails: new FormControl(''),
+      contactDetails: new FormGroup({
+        email: new FormControl(''),
+        linkedIn: new FormControl('')
+      }),
       username: new FormControl(''),
       imageURL: new FormControl(''),
       testamonials: new FormControl(''),
+      memberType: new FormControl(''),
+      email: new FormControl(''),
+      linkedIn: new FormControl(''),
       role: new FormControl('')
     });
   }

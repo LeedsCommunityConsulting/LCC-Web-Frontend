@@ -30,7 +30,7 @@ constructor(private auth: AuthService,
 
 getAllEvents(){
   this.api.dGet('getAllEvents').subscribe((res : any) => {
-        console.log(res);
+        // console.log(res);
       //  this.pS = false;
        this.events = res.length;
       //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -39,7 +39,7 @@ getAllEvents(){
 
 getAllCaseStudies(){
   this.api.dGet('getAllCaseStudies').subscribe((res : any) => {
-        console.log(res);
+        // console.log(res);
       //  this.pS = false;
        this.caseStudies = res.length;
       //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -48,7 +48,7 @@ getAllCaseStudies(){
 
 getAllUser(){
   this.api.dGet('getAllUser').subscribe((res : any) => {
-        console.log(res);
+        // console.log(res);
       //  this.pS = false;
        this.UsersData = res.length;
       //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -57,7 +57,7 @@ getAllUser(){
 
 getAllVacancy(){
   this.api.dGet('getAllVacancy').subscribe((res : any) => {
-        console.log(res);
+        // console.log(res);
       //  this.pS = false;
        this.vacancyData = res.length;
       //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
