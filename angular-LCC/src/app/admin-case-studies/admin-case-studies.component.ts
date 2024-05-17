@@ -64,7 +64,7 @@ export class AdminCaseStudiesComponent {
     this.params.q =  this.searchParamsVal;
     this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
     this.getAllCaseStudies();
-    console.log(this.searchParamsVal );
+    // console.log(this.searchParamsVal );
    // console.log($('#mySearch').value());
   }
 
@@ -76,7 +76,7 @@ export class AdminCaseStudiesComponent {
 
   submitForm(form: any): void {
     if (form.valid) {
-      console.log('Form data:', this.eventDetails);
+      // console.log('Form data:', this.eventDetails);
       this.api.dPost('addCaseStudies', this.eventDetails).subscribe((res : any) => {  
         console.log(res);
         $("#add-event-modal").modal('hide');

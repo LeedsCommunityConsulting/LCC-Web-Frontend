@@ -18,6 +18,7 @@ export class AboutUsComponent implements OnInit {
   public currentWindowWidth: any;
   public teams : any = [];
   public data : any = [];
+  public params = { memberType: "executive" };
 
   constructor(private auth: AuthService,
     public api : ApiService){
@@ -35,12 +36,12 @@ this.getAllTeamMembers();
 
 
   getAllTeamMembers(){
-    // this.api.dGet('getUserByRole').subscribe((res : any) => {
-    //       console.log(res);
-    //     //  this.pS = false;
-    //      this.teams = res;
-    //     //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
-    //   }, error => { console.log(error); });
+    this.api.dNGet('getAllUser', this.params).subscribe((res : any) => {
+          // console.log(res);
+        //  this.pS = false;
+         this.teams = res;
+        //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
+      }, error => { console.log(error); });
   }
 
 }

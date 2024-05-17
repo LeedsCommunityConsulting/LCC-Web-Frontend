@@ -37,7 +37,7 @@ export class ClientInfoComponent {
 getCasestudy(){
   this.id = this.route.snapshot.paramMap.get("id");
   this.api.dGetCaseStudies('getUniqueCaseStudy', this.id).subscribe((res : any) => {
-        console.log(res);
+        // console.log(res);
       //  this.pS = false;
        this.data = res;
       //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -46,7 +46,7 @@ getCasestudy(){
 
 
 ngOnInit(): void {
-  console.log('Component initialized');
+  // console.log('Component initialized');
   this.renderer.setProperty(document.documentElement, 'scrollTop', 0);
 }
 

@@ -44,7 +44,7 @@ export class ClientsComponent {
     this.params.q =  this.searchParamsVal;
     this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
     this.getAllVacancy();
-    console.log(this.searchParamsVal );
+    // console.log(this.searchParamsVal );
    // console.log($('#mySearch').value());
   }
 
@@ -57,7 +57,7 @@ export class ClientsComponent {
 
   getAllVacancy(){
     this.api.dNGet('getAllCaseStudies', this.params).subscribe((res : any) => {
-          console.log(res);
+          // console.log(res);
         //  this.pS = false;
          this.data = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);

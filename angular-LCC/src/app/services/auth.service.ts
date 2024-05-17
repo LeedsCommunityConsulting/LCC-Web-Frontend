@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   login(datas: any) {
-  	console.log(this.apiUrl)
+  	// console.log(this.apiUrl)
   	return this.http.post(this.apiUrl+"auth/login", datas, {headers: {'Content-Type': 'application/json'}}).toPromise();
   }
   forgotEmail(datas: any) {

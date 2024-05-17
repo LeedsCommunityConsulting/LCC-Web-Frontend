@@ -91,7 +91,7 @@ export class AdminEventsComponent {
     this.params.q =  this.searchParamsVal;
     this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
     this.getAllEvents();
-    console.log(this.searchParamsVal );
+    // console.log(this.searchParamsVal );
    // console.log($('#mySearch').value());
   }
 
@@ -112,11 +112,11 @@ export class AdminEventsComponent {
     const endDate = new Date(this.eventDetails.endDate);
     const enddateString = endDate.toDateString();
     this.eventDetails.endTime =  enddateString +" "+this.eventDetails.endTime  ;
-    console.log( this.eventDetails.endTime)
+    // console.log( this.eventDetails.endTime)
     if (form.valid) {
       // console.log('Form data:', this.eventDetails);
       this.api.dPost('addEvents', this.eventDetails).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#add-event-modal").modal('hide');
         this.getAllEvents()
         form.resetForm();
@@ -138,7 +138,7 @@ export class AdminEventsComponent {
 
   getAllEvents(){
     this.api.dNGet('getAllEvents', this.params).subscribe((res : any) => {
-          console.log(res);
+          // console.log(res);
         //  this.pS = false;
          this.data = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -156,7 +156,7 @@ export class AdminEventsComponent {
   }
 
   selectRow(id: any){
-    console.log(id);
+    // console.log(id);
     $("#action-event-modal").modal('show');
     $("#editOrDeleteEvent").val(id);
 
@@ -174,10 +174,10 @@ export class AdminEventsComponent {
 
   deletEvent(){
     var cnfrmDelEveId = $("#confrmDeleteEvent").val();
-    console.log(cnfrmDelEveId);
+    // console.log(cnfrmDelEveId);
     this.api.dDelete('deleteEvent', cnfrmDelEveId).subscribe(
       () => {
-        console.log('Item deleted successfully');
+        // console.log('Item deleted successfully');
         $("#delete-event-modal").modal('hide')
         $("#action-event-modal").modal('hide');
         this.getAllEvents()
@@ -187,7 +187,7 @@ export class AdminEventsComponent {
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       },
       error => {
@@ -204,7 +204,7 @@ export class AdminEventsComponent {
     $("mat-datepicker-content").addClass("margination")
     var dval = $("#editOrDeleteEvent").val();
     this.editData = this.data.find((item: { id: { S: string } }) => item.id.S === dval);
-    console.log(this.editData)
+    // console.log(this.editData)
     $("#editEventsId").val(this.editData.id.S);
     const stime = new Date(this.editData.startTime.S);
     const shours = stime.getHours();
@@ -215,7 +215,7 @@ export class AdminEventsComponent {
     const ehours = etime.getHours();
     const eminutes = etime.getMinutes();
     const eetime = `${ehours}:${eminutes}`
-    console.log(eetime)
+    // console.log(eetime)
     this.myForm.setValue({
       title: this.editData.title.S,
       // time: this.editData.time.S,
@@ -247,9 +247,9 @@ export class AdminEventsComponent {
 
     // console.log(this.myForm.controls['startTime'].value);
     if (form.valid) {
-      console.log('Form data:', this.myForm.value);
+      // console.log('Form data:', this.myForm.value);
       this.api.dUpdate('updateEvent', this.myForm.value, cnfrmUpdstaeEveId).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#edit-event-modal").modal('hide');
         $("#action-event-modal").modal('hide');
         this.getAllEvents()
@@ -262,7 +262,7 @@ export class AdminEventsComponent {
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
     console.log();

@@ -62,7 +62,7 @@ export class AdminVaccancyComponent {
     this.params.q =  this.searchParamsVal;
     this.router.navigate([], { queryParams: {q: this.searchParamsVal , published: this.params.published, order: this.params.order} } );
     this.getAllVacancy();
-    console.log(this.searchParamsVal );
+    // console.log(this.searchParamsVal );
    // console.log($('#mySearch').value());
   }
   addToggle()
@@ -78,9 +78,9 @@ export class AdminVaccancyComponent {
 
   submitForm(form: any): void {
     if (form.valid) {
-      console.log('Form data:', this.eventDetails);
+      // console.log('Form data:', this.eventDetails);
       this.api.dPost('addVacancy', this.eventDetails).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#add-event-modal").modal('hide');
         this.getAllVacancy()
         form.resetForm();
@@ -90,7 +90,7 @@ export class AdminVaccancyComponent {
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
     console.log();
@@ -99,7 +99,7 @@ export class AdminVaccancyComponent {
 
   getAllVacancy(){
     this.api.dNGet('getAllVacancy', this.params).subscribe((res : any) => {
-          console.log(res);
+          // console.log(res);
         //  this.pS = false;
          this.data = res;
         //  this.data.content = this.domSanitizer.bypassSecurityTrustHtml(this.data.content);
@@ -113,7 +113,7 @@ export class AdminVaccancyComponent {
   }
 
   selectRow(id: any){
-    console.log(id);
+    // console.log(id);
     $("#action-event-modal").modal('show');
     $("#editOrDeleteEvent").val(id);
 
@@ -131,7 +131,7 @@ export class AdminVaccancyComponent {
 
   deletEvent(){
     var cnfrmDelEveId = $("#confrmDeleteEvent").val();
-    console.log(cnfrmDelEveId);
+    // console.log(cnfrmDelEveId);
     this.api.dDelete('deleteVacancy', cnfrmDelEveId).subscribe(
       () => {
         console.log('Item deleted successfully');
@@ -144,7 +144,7 @@ export class AdminVaccancyComponent {
         setTimeout(function() {
           that.successmsg = false;
           that.successMsgCnt = "";
-          console.log(that.successmsg);
+          // console.log(that.successmsg);
         }.bind(this), 3000);
       },
       error => {
@@ -157,7 +157,7 @@ export class AdminVaccancyComponent {
     $("#edit-event-modal").modal('show')
     var dval = $("#editOrDeleteEvent").val();
     this.editData = this.data.find((item: { id: { S: string } }) => item.id.S === dval);
-    console.log(this.editData)
+    // console.log(this.editData)
     $("#editEventsId").val(this.editData.id.S);
     this.myForm.setValue({
       title: this.editData.title.S,
@@ -174,11 +174,11 @@ export class AdminVaccancyComponent {
 
   updateEventsForm(form: any): void {
     var cnfrmUpdstaeEveId = $("#editEventsId").val();
-    console.log(this.myForm.value);
+    // console.log(this.myForm.value);
     if (form.valid) {
-      console.log('Form data:', this.myForm.value);
+      // console.log('Form data:', this.myForm.value);
       this.api.dUpdate('updateVacancy', this.myForm.value, cnfrmUpdstaeEveId).subscribe((res : any) => {  
-        console.log(res);
+        // console.log(res);
         $("#edit-event-modal").modal('hide');
         $("#action-event-modal").modal('hide');
         this.getAllVacancy()
@@ -191,7 +191,7 @@ export class AdminVaccancyComponent {
           console.log(that.successmsg);
         }.bind(this), 3000);
       }, error => { console.log(error); alert("something goes wrong. Please refresh and try again!") });
-    console.log();
+    // console.log();
     }
   }
 
