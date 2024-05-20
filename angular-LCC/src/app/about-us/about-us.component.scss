@@ -1,3 +1,5 @@
+@import "../../scss/variables.scss";
+
 .meet-team{
     padding-bottom: 100px;
     @media (max-width: 992px){
@@ -7,6 +9,12 @@
         }
         padding-bottom: 0;
     }
+}
+
+.contentText {
+    color: black;
+    font-size: 3em;
+    text-align: center;
 }
 
 .meetTeam{
@@ -121,10 +129,8 @@
         }
     }
     p{
-        font-size: 18px;
         margin-bottom: 25px;
         @media (max-width: 992px){
-            font-size: 16px;
             text-align: center;
         }
         a{
@@ -323,10 +329,13 @@
 }
 
 .ip-banner {
-    min-height: 350px;
+    height: calc(100vh - 100px);
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
+
+
 
     @media(max-width: 991px) {
         top: 70px;
@@ -337,15 +346,69 @@
     }
 
     background: {
-        image: url("https://cdn.pixabay.com/photo/2023/10/25/07/02/lecturer-8339699_1280.jpg");
+        image: url("/assets/img/slide3.jpg");
         repeat: no-repeat;
         position: center;
+        attachment: fixed;
         size: cover;
         color: white;
     }
 
     &.no-image {
         background-image: none;
+    }
+
+
+    .ban-text {
+        font-size: 3.2rem;
+        color: $white;
+        max-width: 100%;
+        font-family: $light-font-family;
+        padding: 4rem 8rem;
+        max-width: 800px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width:768px) {
+            font-size: 3.5rem;
+            background-color: rgba(0, 0,0,0.5);
+            text-align: left;
+            h2{
+                font-size: 6rem;
+                font-weight: bold;
+            }
+        }
+
+        @media (max-width:978px){
+            font-size: 3.5rem;
+            margin-left: 5% !important;
+            margin-right: 5%;
+            background-color: rgba(0, 0,0,0.5);
+            text-align: left;
+            h2{
+                font-size: 4rem;
+                font-weight: bold;
+            }
+        }
+
+        .ban-subtext {
+            margin-left: auto;
+        }
+
+        .ban-btn-link {
+            min-width: 100px;
+            max-width: 125px;
+            margin-left: auto;
+            height: 3.7rem;
+            background-color: $lcc-green;
+            border-color: none;
+            border-radius: 5px;
+            color: #FFF;
+            font-size: 1.4rem;
+            line-height: 1.2;
+            padding: 1rem 2rem;
+        }
     }
 
     h1 {

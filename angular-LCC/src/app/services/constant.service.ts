@@ -8,8 +8,8 @@ export class ConstantService {
 
   // public environment : string = "staging";
   //  public apiUrl  : string = "http://localhost:8800/";
-   public apiUrl  : string = "http://18.132.40.56/";
-   public baseUrl : string = "http://18.132.40.56/";
+   public apiUrl  : string = "https://www.leedscommunityconsulting.co.uk/api/";
+   public baseUrl : string = "https://www.leedscommunityconsulting.co.uk/api/";
   // public baseUrl : string = "http://localhost:8800/";
 
   constructor() { }

@@ -28,8 +28,8 @@ import {
   ɵɵprojection,
   ɵɵprojectionDef
 } from "./chunk-SKS6UP27.js";
-import "./chunk-V2DXGMIT.js";
 import "./chunk-UKEHM6V6.js";
+import "./chunk-V2DXGMIT.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/ngx-slick-carousel/fesm2022/ngx-slick-carousel.mjs

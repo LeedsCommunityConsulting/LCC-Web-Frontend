@@ -46,31 +46,33 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.homeSlider = {
-      "slidesToShow": 1, "slidesToScroll": 1, "dots": false, "autoplay": true, "autoplaySpeed": 2000,"speed":1000, "infinite": true ,"arrows": false
+      "slidesToShow": 1, "slidesToScroll": 1, "dots": false, "autoplay": true, "autoplaySpeed": 4000,"speed":1500, "infinite": true ,"arrows": false
     };
   }
 
   slides = [
-    {src: "https://www.viasat.com/content/dam/us-site/government/images/1245270_Space_Domain_Hero_003.jpg", text: "NIGHT TIME ECONOMY SOLUTIONS", subtext: "VISIT OUR CLIENTS PAGE TO FIND OUT MORE", linktext: "Learn More", linkroute: "http://www.leedscommunityconsulting.co.uk/clients?q=&published=1&order=asc"},
-    {src: "/assets/img/newImage1.jpg", text: "EXPLORE OUR VACANCIES", subtext: "VISIT OUR VACANCIES PAGE TO FIND OUT MORE", linktext: "Find out More", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
+    {src: "/assets/img/leeds-flats.jpg", text: "Check out our previous success stories", subtext: "All available on our clients page.", linktext: "Clients", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
+    {src: "/assets/img/newImage1.jpg", text: "Start building your future in consultancy", subtext: "Visit our vacancies page to learn more.", linktext: "Vacancies", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
+    {src: "/assets/img/leeds-clocktower.jpg", text: "Interested in upcoming events?", subtext: "They're all available on our events page.", linktext: "Events", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
+
     // {src: "https://images.pexels.com/photos/9659841/pexels-photo-9659841.jpeg?auto=compress&cs=tinysrgb&w=800", text: "EXPLORE OUR VACANCIES", subtext: "We Helped Them To...", linktext: "Find out More"},
   ];
   // slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
   
   slickInit(e: any) {
-    console.log('slick initialized');
+    // console.log('slick initialized');
   }
     
   breakpoint(e: any) {
-    console.log('breakpoint');
+    // console.log('breakpoint');
   }
     
   afterChange(e: any) {
-    console.log('afterChange');
+    // console.log('afterChange');
   }
     
   beforeChange(e: any) {
-    console.log('beforeChange');
+    // console.log('beforeChange');
   }
 
 }

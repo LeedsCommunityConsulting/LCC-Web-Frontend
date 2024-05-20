@@ -11,13 +11,11 @@
                         (beforeChange)="beforeChange($event)">
         <div ngxSlickItem *ngFor="let slide of slides" class="item home-slide-item" [style.background-image]="'url(' + slide?.src + ')'">
               <!-- <img src="{{ slide.src }}" alt="" width="100%"> -->
-              <div class="container" style="position: relative;bottom: 28%;">
+              <div class="ban-container container" style="position: relative;bottom: 28%;">
                 <div class="ban-text" style="position: absolute;">
-                    <div class="">
                     <h2>{{slide?.text}}</h2>
-                    <p>{{slide?.subtext}}</p>
+                    <p class="ban-subtext">{{slide?.subtext}}</p>
                     <a [href]="slide?.linkroute" class="btn ban-btn-link">{{slide?.linktext}}</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -26,45 +24,41 @@
 
 
 <section class="vision" id="vision">
-    <div class="container">
-        <h1 style="color: #324819; font-size: 40px;font-weight: bold;text-align: center;">LEEDS COMMUNITY CONSULTING</h1>
-        <img class="center" src="/assets/img/LCC-HomeL.svg" alt="">
-        <hr class="hr-custom">
-        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">WHAT WE DO</h3>
+    <div class="container home-container">
+        <img class="center" src="/assets/img/lcc-green-2.svg" alt="">
+        <p class="heading-1">LEEDS COMMUNITY CONSULTING</p>
+        <p class="heading-2">What we do:</p>
         <div>
-            <p style="color: #324819;font-weight: bold;">
-                LCC is a student-led pro-bono consultancy firm.
+            <p class="contentText">
+                LCC is a <span class="hilite">student-led</span> pro-bono consultancy firm.
             </p>
             <p class="contentText">Our aims include:</p> 
-            <ul style="color: #324819;font-weight: bold;">
-                <li>enabling students to gain real world experience first-hand</li>
-                <li>providing a positive social impact to the local Leeds community</li>
+            <ul class="contentText">
+                <li>Enabling students to gain real world experience first-hand,</li>
+                <li>Providing a positive social impact to the local Leeds community,</li>
             </ul>
             <p class="contentText">
-                We aim to provide value in our local community. We attract the most intelligent and enthusiastic
+                We aim to provide <span class="hilite">value</span> in our local community. We attract the most intelligent and enthusiastic
                 minds in Leeds and match them with clients that come to us with a variety of issues and aims!
             </p>
-            <hr class="hr-custom" >
-            <p class="contentText" style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">Why LCC?</p> 
-            <ul style="color: #324819;font-weight: bold;">
-                <li>Free yet professional services</li>
-                <li>Access to fresh perspective and creative minds of students</li>
-                <li>Wide variety of skill sets brought to the project</li>
+            <p class="heading-2">Why LCC?</p> 
+            <ul class="contentText">
+                <li>Free yet professional services.</li>
+                <li>Access to fresh perspective and creative minds of students.</li>
+                <li>Wide variety of skill sets brought to the project.</li>
             </ul>
-            <hr class="hr-custom" >
-            <p class="contentText" style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">What we can offer</p> 
+            <p class="heading-2">What we can offer:</p> 
             <p class="contentText">We have the skills to assist you in the following areas:</p> 
-            <ul style="color: #324819;font-weight: bold;">
-                <li>Consumer & Market Research</li>
-                <li>Operations Management</li>
-                <li>Brand & Communication</li>
-                <li>Data Analytics</li>
-                <li>Business Strategy</li>
+            <ul class="contentText">
+                <li>Consumer & Market Research,</li>
+                <li>Operations Management,</li>
+                <li>Brand & Communication,</li>
+                <li>Data Analytics,</li>
+                <li>Business Strategy,</li>
             </ul>
         </div>
-        <hr class="hr-custom">
-        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 3rem;">TESTIMONIALS</h3>
-        <p style="color: #324819;font-weight: bold;text-align: center;">The following testimonials are excerpts of feedback from clients we’ve had the pleasure of working
+        <p class="heading-2">Testimonials:</p>
+        <p class="contentText">The following testimonials are excerpts of feedback from clients we’ve had the pleasure of working
             with.</p>
         <div class="testimonialsrow">
             <div class="testimonialscolumn" *ngFor="let testimonialas of data">
@@ -79,29 +73,28 @@
                 </a>
             </div>
         </div>
-        <hr class="hr-custom">
 
-        <h3 style="color: #324819; font-size: 30px;font-weight: bold;text-align: center;margin-bottom: 25px;">WORK WITH US</h3>
-        <div class="grid-container">
-            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 1">
+        <!-- <p class="heading-2">WORK WITH US</p>
+        <div class="image-button-container">
+            <div class="image-button" style="background-image: url('/assets/img/become-consultant.jpg');">
                 <a href="javascript:;" [routerLink]="['/vacancies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
                     <div class="centered-text">BECOME A CONSULTANT</div>
                 </a>
             </div>
-            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 2">
+            <div class="image-button" style="background-image: url('/assets/img/hire-services.jpg'); background-position: center;">
                 <div class="centered-text">HIRE OUR SERVICES</div>
             </div>
-            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 3">
+            <div class="image-button" style="background-image: url('/assets/img/contact-us.jpg');">
                 <a href="javascript:;" [routerLink]="['/contact-us']">
                     <div class="centered-text">CONTACT US</div>
                 </a>
             </div>
-            <div class="grid-item"><img src="/assets/img/slide1.jpg" alt="Image 4">
+            <div class="image-button" style="background-image: url('/assets/img/vacancies.jpg');">
                 <a href="javascript:;" [routerLink]="['/vacancies']" [queryParams]="{ q: '', published: '1', order: 'asc' }">
                     <div class="centered-text">VACANCIES</div>
                 </a>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 <app-footer></app-footer>

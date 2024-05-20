@@ -9,32 +9,52 @@ header {
     z-index: 1000; 
 
     .header-inner {
-        padding: 0;
+        padding: 0 10px 0 0;
         min-height: 80px;
         display: flex;
+        flex-direction: row;
         align-items: center;
+        justify-content: center;
 
         @media (min-width: 992px) {
             align-items: center;
             min-height: 100px;
         }
 
-        .logo {
-            background: {
-                image: url("/assets/img/lcc-logo.svg");
-                repeat: no-repeat;
-                size: cover;
-            }
-
-            width: 99px;
-            height: 80px;
-            display: inline-block;
-            margin-bottom: 0;
+        .logo-wrapper {
+            width: auto;
 
             @media (min-width: 992px) {
-                width: 120px;
-                height: 90px;
+                // display: flex;
+                width: auto;
+                height: 50px;
+            }
+        }
+
+        .logo {
+            background: {
+                image: url("/assets/img/lcc-logo-3.svg");
+                size: contain;
+                repeat: no-repeat;
+            }
+            &:hover{
+                background: {
+                    image: url("/assets/img/lcc-green-2.svg");
+                } 
+            }
+            transition: .3s;
+            
+
+            width: 75px;
+            height: 75px;
+            margin: 8px;
+            display: inline-block;
+
+            @media (min-width: 992px) {
+                width: 50px;
+                height: 50px;
                 margin-bottom: 1rem;
+                margin: 0
             }
 
         }
@@ -156,8 +176,6 @@ header {
         @media (min-width: 992px) {
             display: flex;
             flex-direction: column;
-            margin-left: auto;
-            margin-right: auto;
         }
 
 
@@ -217,7 +235,7 @@ header {
             }
 
             &:hover {
-                color: $dark-grey;
+                color: $lcc-green;
                 text-decoration: none;
             }
         }
@@ -237,7 +255,7 @@ header {
         li {
             &:hover {
                 >a {
-                    color: $dark-grey;
+                    color: $lcc-green;
                     text-decoration: none;
                 }
             }

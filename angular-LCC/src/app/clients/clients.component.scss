@@ -308,6 +308,10 @@ body {
  display: flex;
  flex-grow: 1;
  padding-top: 30px;
+ overflow: hidden;
+ :hover {
+  overflow: visible;
+ }
 }
 
 .search-type {

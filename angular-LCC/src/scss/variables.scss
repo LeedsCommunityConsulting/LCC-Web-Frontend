@@ -1,15 +1,17 @@
 // Color // 
 $white      : #FFF;
-$primary    : #5C821A;
+$primary    : #000000;
 $dark-grey  : #4A4A49;
 $text-color : #0b0b22;
+$lcc-green  : #5C842E;
+$lcc-grey   : rgb(63, 63, 63);
 
 
 // Font Family //
-$regular-font-family    : Helvetica, "Helvetica Neue", Arial, sans-serif;
-$title-font-family      : "Helvetica Neue", Helvetica, Arial, sans-serif;
-$light-font-family      : "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$content-font-family    : "Helvetica Neue", Helvetica, Arial, sans-serif;
+$regular-font-family    : "Lexend", "Helvetica Neue", Arial, sans-serif;
+$title-font-family      : "Lexend", Helvetica, Arial, sans-serif;
+$light-font-family      : "Lexend", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$content-font-family    : "Lexend", Helvetica, Arial, sans-serif;
 
 $ani-speed: 2s;
 $ani-delay: 1s;
