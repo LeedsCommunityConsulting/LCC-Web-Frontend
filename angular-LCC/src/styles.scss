@@ -12,6 +12,13 @@ body {
     font-size: 1.6rem;
 }
 
+
+  .lcc-link {
+    color: $lcc-green !important;
+  }
+
+
+
 :focus {
     outline: 0;
 }
@@ -1204,11 +1211,16 @@ body {
 
 }
 
+p {
+  word-wrap: wrap !important;
+}
+
 .heading-1 {
   text-align: center;
   font-weight: 650;
   color: $lcc-green;
   font-size: 5.5em;
+  font-family: $content-font-family;
 
   @media (max-width: 768px) {
       margin-top: 8px;
@@ -1224,12 +1236,12 @@ body {
 
   @media (max-width: 768px) {
       margin-top: 8px;
-      font-size: 4em;
+      font-size: 3em;
   }
 }
 
 .full {
-  height: 90vh;
+  min-height: 90vh;
 }
 
 .contentText{
@@ -1237,6 +1249,10 @@ body {
   font-size: 3em;
   font-family: $content-font-family;
   margin-bottom: 16px;
+  @media (max-width: 768px) {
+    margin-top: 8px;
+    font-size: 2em;
+}
 }
 
 
