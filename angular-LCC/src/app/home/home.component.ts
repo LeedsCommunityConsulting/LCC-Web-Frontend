@@ -51,9 +51,9 @@ export class HomeComponent {
   }
 
   slides = [
-    {src: "/assets/img/leeds-flats.jpg", text: "Check out our previous success stories", subtext: "All available on our clients page.", linktext: "Clients", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
+    {src: "/assets/img/leeds-flats.jpg", text: "Check out our previous success stories", subtext: "All available on our clients page.", linktext: "Clients", linkroute: "http://www.leedscommunityconsulting.co.uk/clients?q=&published=1&order=asc"},
     {src: "/assets/img/newImage1.jpg", text: "Start building your future in consultancy", subtext: "Visit our vacancies page to learn more.", linktext: "Vacancies", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
-    {src: "/assets/img/leeds-clocktower.jpg", text: "Interested in upcoming events?", subtext: "They're all available on our events page.", linktext: "Events", linkroute: "http://www.leedscommunityconsulting.co.uk/vacancies?q=&published=1&order=asc"},
+    {src: "/assets/img/leeds-clocktower.jpg", text: "Interested in upcoming events?", subtext: "They're all available on our events page.", linktext: "Events", linkroute: "http://www.leedscommunityconsulting.co.uk/events?q=&published=1&order=asc"},
 
     // {src: "https://images.pexels.com/photos/9659841/pexels-photo-9659841.jpeg?auto=compress&cs=tinysrgb&w=800", text: "EXPLORE OUR VACANCIES", subtext: "We Helped Them To...", linktext: "Find out More"},
   ];
