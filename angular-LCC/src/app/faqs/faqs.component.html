@@ -37,7 +37,7 @@
         <label for="accordion3" class="accordion-item-title"><span class="icon"></span>Who are some of your past clients?</label>
         <div class="accordion-item-desc">
             <p >
-                To view our past clients, go to our clients page.
+                To view our past clients, go to our <a [routerLink]="['/clients']" [queryParams]="{ q: '', published: '1', order: 'asc' }" href="javascript:;" class="lcc-link">clients page</a>.
             </p>
         </div>
     </div>
@@ -62,7 +62,7 @@
         <input type="checkbox" id="accordion6">
         <label for="accordion6" class="accordion-item-title"><span class="icon"></span>Will I be paid?</label>
         <div class="accordion-item-desc">
-            
+            <p>Leeds Community Consulting is a pro-bono consultancy to help students acquire the skills necessary to pursue a future in consultancy. Our members therefore do not earn a salary.</p>
         </div>
     </div>
 

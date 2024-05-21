@@ -1,4 +1,7 @@
 // @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700&display=swap");
+@import "../../scss/variables.scss";
+
+
 body {
     background: #fafafa;
 }
@@ -72,6 +75,13 @@ body {
 }
 .accordion-item .icon {
     margin-left: 14px;
+}
+
+a {
+    color: $lcc-green;
+    :hover {
+        color: $lcc-green !important;
+    }
 }
 
 @media screen and (max-width: 767px) {
